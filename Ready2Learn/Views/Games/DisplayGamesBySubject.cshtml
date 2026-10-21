@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Game>
+
+@{
+    ViewData["Title"] = $"{Model.FirstOrDefault()?.Subject} Games";
+    var subject = Model.FirstOrDefault()?.Subject?.Trim();
+    var gamesList = Model.ToList();
+}
+
+<div class="container align-items-center">
+    @if (string.Equals(subject, "Science", System.StringComparison.OrdinalIgnoreCase))
+    {
+        <!-- Top row: up to 3 -->
+        <div class="row justify-content-center">
+            @for (int i = 0; i < Math.Min(3, gamesList.Count); i++)
+            {
+                var game = gamesList[i];
+                <div class="col-3 text-center" style="align-items: center;">
+                    @{
+                        string actionName = game.Name.Replace(" ", string.Empty);
+                    }
+                    <a class="btn btn-light game-card square"
+                       asp-action="@actionName"
+                       role="button"
+                       data-tts="@game.Name"
+                       data-tts-trigger="hover focus"
+                       aria-label="@game.Name">
+                        <i class="bi bi-puzzle game-icon" aria-hidden="true"></i>
+                        <div class="game-title">@game.Name</div>
+                    </a>
+                </div>
+            }
+        </div>
+
+        <br />
+
+        <!-- Second row: remaining games (centered) -->
+        @if (gamesList.Count > 3)
+        {
+            <div class="row justify-content-center">
+                @for (int i = 3; i < gamesList.Count; i++)
+                {
+                    var game = gamesList[i];
+                    <div class="col-3 text-center" style="align-items: center;">
+                        @{
+                            string actionName = game.Name.Replace(" ", string.Empty);
+                        }
+                        <a class="btn btn-light game-card square"
+                           asp-action="@actionName"
+                           role="button"
+                           data-tts="@game.Name"
+                           data-tts-trigger="hover focus"
+                           aria-label="@game.Name">
+                            <i class="bi bi-puzzle game-icon" aria-hidden="true"></i>
+                            <div class="game-title">@game.Name</div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <!-- Default: chunk into rows of 4 (unchanged) -->
+        @foreach (Game[] games in Model.Chunk(4))
+        {
+            <div class="row justify-content-center">
+                @foreach (Game game in games)
+                {
+                    <div class="col-3 text-center" style="align-items: center;">
+                        @{
+                            string actionName = game.Name.Replace(" ", string.Empty);
+                        }
+                        <a class="btn btn-light game-card square"
+                           asp-action="@actionName"
+                           role="button"
+                           data-tts="@game.Name"
+                           data-tts-trigger="hover focus"
+                           aria-label="@game.Name">
+                            <i class="bi bi-puzzle game-icon" aria-hidden="true"></i>
+                            <div class="game-title">@game.Name</div>
+                        </a>
+                    </div>
+                }
+            </div>
+            <br />
+        }
+    }
+</div>

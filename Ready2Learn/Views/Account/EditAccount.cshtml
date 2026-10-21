@@ -1,0 +1,99 @@
+﻿@model Ready2Learn.Models.Teacher
+
+@{
+    ViewData["Title"] = "Edit Account";
+}
+
+<div class="container align-items-center">
+    <form asp-action="EditAccount" method="post" id="editAccountForm">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row offset-2">
+            <div class="col-4">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col-4">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <label asp-for="Username" class="control-label">Username</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="col-4">
+                <label class="control-label">Password</label>
+                <input class="form-control" type="password" id="Password" name="Password" value="@Model?.PasswordHash" />
+                <span class="text-danger">@Html.ValidationMessage("Password")</span>
+            </div>
+
+            <div class="col-4">
+                <label class="control-label">Confirm Password</label>
+                <input class="form-control" type="password" id="ConfirmPassword" name="ConfirmPassword" value="@Model?.PasswordHash" />
+                <span class="text-danger">@Html.ValidationMessage("ConfirmPassword")</span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row offset-2">
+            <div class="col-4">
+                <label asp-for="Grade" class="control-label">Grade</label>
+                <select asp-for="Grade" class="form-control">
+                    <option value="PK">Preschool</option>
+                    <option value="KG">Kindergarten</option>
+                    <option value="1">First Grade</option>
+                </select>
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+
+            <div class="col-4">
+                <label asp-for="ClassLink" class="control-label">Class Link</label>
+                <input asp-for="ClassLink" class="form-control" />
+                <span asp-validation-for="ClassLink" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <input type="hidden" asp-for="ID" />
+
+        <div class="row">
+            <div class="col text-center">
+                <input type="submit" value="Update Account" class="btn btn-light me-md-3" />
+                <a class="btn btn-light ms-md-3" asp-action="Account" asp-route-id="@Model.ID">Account</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        (function () {
+            $(function () {
+                var form = $("#editAccountForm");
+                if (!form.length) return;
+
+                form.validate();
+
+                // Ensure confirm equals password when either is provided (client-side)
+                $("#ConfirmPassword").rules("add", {
+                    equalTo: "#Password",
+                    messages: { equalTo: "Passwords do not match." }
+                });
+            });
+        })();
+    </script>
+}

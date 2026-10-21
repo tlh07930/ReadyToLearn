@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="main-content">
+    <table class="table" style="width: 65%">
+        <thead>
+            <tr class="text-center">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Student student in Model)
+            {
+                <tr class="text-center">
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>
+                        <a class="btn btn-light" asp-action="EditStudentDetails" asp-route-id="@student.ID">Edit</a>
+                        <a class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#confirmReset_@student.ID">
+                            Reset Password
+                        </a>
+                        <a class="btn btn-danger text-white" asp-action="DeleteStudentAccount" asp-route-id="@student.ID">Delete</a>
+                    </td>
+                </tr>
+
+                <div class="modal fade" id="confirmReset_@student.ID" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm Password Reset</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to reset the password?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <form asp-action="ResetStudentPassword" asp-route-id="@student.ID" method="post">
+                                    <button type="submit" class="btn btn-danger">Yes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>
+
+    <div style="position: fixed; right: 25px; bottom: 80px;">
+        <a class="btn btn-light" asp-controller="Student" asp-action="AddStudent">Add Student</a>
+    </div>
+</div>

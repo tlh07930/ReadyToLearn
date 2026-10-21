@@ -1,0 +1,23 @@
+﻿@model Game
+
+@{
+    ViewData["Title"] = "Days of the Week";
+}
+
+@{
+    int studentId = -1;
+    var cookies = Context.Request.Cookies;
+    if (cookies.ContainsKey("StudentID"))
+    {
+        int.TryParse(cookies["StudentID"], out studentId);
+    }
+    else if (cookies.ContainsKey("TeacherID"))
+    {
+        studentId = -1;
+    }
+
+    ViewData["GameName"] = "Days of the Week";
+    ViewData["StudentId"] = studentId;
+}
+
+@await Html.PartialAsync("_GameTemplate")

@@ -1,0 +1,200 @@
+﻿@model IEnumerable<Student>
+
+@{
+    ViewData["Title"] = "Student Log In";
+}
+
+<style>
+    .password-carousel {
+        width: 160px;
+        height: 160px;
+        position: relative;
+    }
+
+    .password-carousel .carousel-item {
+        height: 100%;
+    }
+
+    .password-carousel .carousel-item.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .password-img {
+        width: 140px;
+        height: 140px;
+        object-fit: contain;
+        display: block;
+    }
+
+    .password-carousels-row {
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .text-error {
+        color: #dc3545;
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+    }
+</style>
+
+<script>
+    function clearErrors() {
+        var selErr = document.getElementById('studentSelectError');
+        if (selErr) selErr.textContent = '';
+        var passErr = document.getElementById('passwordImagesError');
+        if (passErr) passErr.textContent = '';
+    }
+
+    function setInputs(e) {
+        clearErrors();
+
+        var studentSelect = document.getElementById("studentSelect");
+        var activeStudent = studentSelect ? studentSelect.value.trim() : "";
+        if (!activeStudent) {
+            var selErr = document.getElementById('studentSelectError');
+            if (selErr) selErr.textContent = "Please select a student.";
+            // Prevent form submit
+            e.preventDefault();
+            return false;
+        }
+
+        // Set first/last name
+        var parts = activeStudent.split(" ");
+        document.getElementById("FirstName").value = parts[0] || "";
+        document.getElementById("LastName").value = parts.slice(1).join(" ") || "";
+
+        // Collect selected password images and validate none are empty
+        var selectedValues = [];
+        for (var i = 0; i < 4; i++) {
+            var activeItem = document.querySelector('#passwordImageCarousel_' + i + ' .carousel-item.active');
+            var value = activeItem ? activeItem.getAttribute('data-value') : null;
+            selectedValues.push(value);
+            var hidden = document.getElementById("selectedPasswordImage_" + i);
+            if (hidden) hidden.value = value || "";
+        }
+
+        var missing = selectedValues.some(v => v === null || v === "" || typeof v === 'undefined');
+        if (missing) {
+            var passErr = document.getElementById('passwordImagesError');
+            if (passErr) passErr.textContent = "Please select an image for each password slot before logging in.";
+            e.preventDefault();
+            return false;
+        }
+
+        // All good; allow submit
+        return true;
+    }
+
+    // Clear errors once a student is selected or carousel changed
+    document.addEventListener('DOMContentLoaded', function () {
+        var studentSelect = document.getElementById("studentSelect");
+        if (studentSelect) {
+            studentSelect.addEventListener('change', clearErrors);
+        }
+        // Observe carousel slides to clear errors when user changes an image
+        for (var i = 0; i < 4; i++) {
+            (function (idx) {
+                var carousel = document.getElementById('passwordImageCarousel_' + idx);
+                if (!carousel) return;
+                carousel.addEventListener('slid.bs.carousel', function () {
+                    var passErr = document.getElementById('passwordImagesError');
+                    if (passErr) passErr.textContent = '';
+                });
+            })(i);
+        }
+    });
+</script>
+
+<form asp-action="StudentLogIn" asp-controller="LogIn" onsubmit="setInputs(event)">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <select class="form-control" id="studentSelect" style="text-align-last: center;">
+            <option value="">-- Select a Student --</option>
+            @foreach (Student student in Model)
+            {
+                <option value="@student.FirstName @student.LastName">@student.FirstName @student.LastName</option>
+            }
+        </select>
+        <div id="studentSelectError" class="text-error" role="alert" aria-live="polite">
+            @(ViewData["StudentSelectError"] ?? "")
+        </div>
+
+        <input type="hidden" name="FirstName" id="FirstName" />
+        <input type="hidden" name="LastName" id="LastName" />
+
+        <input type="hidden" name="teacherId" value="@(Model?.FirstOrDefault()?.TeacherID ?? 0)" />
+    </div>
+    <br />
+
+    <div class="form-group password-carousels-row">
+        @for (int i = 0; i < 4; i++)
+        {
+            <div id="passwordImageCarousel_@i" class="carousel slide password-carousel" data-bs-ride="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-value="bike">
+                        <img src="/Images/StudentLogIn/bike.png" class="password-img" alt="bike">
+                    </div>
+                    <div class="carousel-item" data-value="blocks">
+                        <img src="/Images/StudentLogIn/blocks.png" class="password-img" alt="blocks">
+                    </div>
+                    <div class="carousel-item" data-value="books">
+                        <img src="/Images/StudentLogIn/books.png" class="password-img" alt="books">
+                    </div>
+                    <div class="carousel-item" data-value="cat">
+                        <img src="/Images/StudentLogIn/cat.png" class="password-img" alt="cat">
+                    </div>
+                    <div class="carousel-item" data-value="dog">
+                        <img src="/Images/StudentLogIn/dog.png" class="password-img" alt="dog">
+                    </div>
+                    <div class="carousel-item" data-value="elephant">
+                        <img src="/Images/StudentLogIn/elephant.png" class="password-img" alt="elephant">
+                    </div>
+                    <div class="carousel-item" data-value="paint">
+                        <img src="/Images/StudentLogIn/paint.png" class="password-img" alt="paint">
+                    </div>
+                    <div class="carousel-item" data-value="slide">
+                        <img src="/Images/StudentLogIn/slide.png" class="password-img" alt="slide">
+                    </div>
+                    <div class="carousel-item" data-value="swing">
+                        <img src="/Images/StudentLogIn/swing.png" class="password-img" alt="swing">
+                    </div>
+                    <div class="carousel-item" data-value="sun">
+                        <img src="/Images/StudentLogIn/sun.png" class="password-img" alt="sun">
+                    </div>
+                    <div class="carousel-item" data-value="teddy bear">
+                        <img src="/Images/StudentLogIn/teddy bear.png" class="password-img" alt="teddy bear">
+                    </div>
+                    <div class="carousel-item" data-value="turtle">
+                        <img src="/Images/StudentLogIn/turtle.png" class="password-img" alt="turtle">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#passwordImageCarousel_@i" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#passwordImageCarousel_@i" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <input type="hidden" name="selectedPasswordImage_@i" id="selectedPasswordImage_@i" />
+        }
+    </div>
+
+    <div id="passwordImagesError" class="text-error" role="alert" aria-live="polite">
+        @(ViewData["PasswordImagesError"] ?? "")
+    </div>
+
+    <br />
+    <div class="form-group text-center">
+        <input type="submit" value="Log In" class="btn btn-light me-md-3" />
+    </div>
+</form>

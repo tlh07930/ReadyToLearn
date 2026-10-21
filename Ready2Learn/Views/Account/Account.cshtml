@@ -1,0 +1,96 @@
+﻿@model Ready2Learn.Models.Teacher
+
+@{
+    ViewData["Title"] = "Account";
+    var fullClassLink = ViewData["ClassLinkFull"] as string ?? $"/class/{Model?.ClassLink ?? string.Empty}";
+    var passwordMask = !string.IsNullOrEmpty(Model?.PasswordHash) ? new string('•', 8) : string.Empty;
+}
+
+<div class="main-content">
+    <div style="width: 65%;">
+        <div class="row" style="justify-content: space-evenly">
+            <div class="col" style="width: 35%">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" readonly />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col" style="width: 35%">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" readonly />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row" style="justify-content: space-evenly">
+            <div class="col" style="width: 35%">
+                <label asp-for="Username" class="control-label">Username</label>
+                <input asp-for="Username" class="form-control" readonly />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="col" style="width: 35%">
+                <label class="control-label">Password</label>
+                <input type="password" class="form-control" value="@passwordMask" readonly />
+            </div>
+        </div>
+        <br />
+
+        <div class="row" style="justify-content: space-evenly">
+            <div class="col" style="width: 35%">
+                <label asp-for="Grade" class="control-label">Grade</label>
+                <input asp-for="Grade" class="form-control" readonly />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+
+            <div class="col classlink-input-container" style="width: 35%">
+                <label asp-for="ClassLink" class="control-label">Class Link</label>
+
+                <div class="input-group">
+                    <input type="text" id="fullClassLink" class="form-control" value="@fullClassLink" readonly />
+                    <button type="button" class="btn btn-outline-secondary" id="copyClassLinkBtn">Copy</button>
+                </div>
+
+                <span asp-validation-for="ClassLink" class="text-danger"></span>
+                <small id="copyFeedback" class="text-success ms-2" style="display:none;">Copied!</small>
+            </div>
+        </div>
+        <br />
+
+        <div class="row" style="text-align: center;">
+            <div class="col">
+                <a class="btn btn-light me-md-3" asp-action="EditAccount" asp-route-id="@Model.ID">Edit Account</a>
+            </div>
+            <div class="col">
+                <a class="btn btn-danger ms-md-3" asp-action="DeleteAccount" asp-route-id="@Model.ID">Delete Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            const copyBtn = document.getElementById('copyClassLinkBtn');
+            const linkEl = document.getElementById('fullClassLink');
+            const fb = document.getElementById('copyFeedback');
+
+            if (copyBtn && linkEl) {
+                copyBtn.addEventListener('click', function () {
+                    const link = linkEl.value;
+                    if (!link) return;
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(link).then(function () {
+                            if (fb) { fb.style.display = 'inline'; setTimeout(() => fb.style.display = 'none', 1200); }
+                        });
+                    } else {
+                        linkEl.select();
+                        document.execCommand('copy');
+                        if (fb) { fb.style.display = 'inline'; setTimeout(() => fb.style.display = 'none', 1200); }
+                    }
+                });
+            }
+        })();
+    </script>
+}

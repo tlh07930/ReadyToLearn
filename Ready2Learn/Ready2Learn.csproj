@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\Navigation\banner bright.png" />
+    <None Include="wwwroot\Images\Navigation\ela.png" />
+    <None Include="wwwroot\Images\Navigation\ela2.png" />
+    <None Include="wwwroot\Images\Navigation\logo white.png" />
+    <None Include="wwwroot\Images\Navigation\logo.png" />
+    <None Include="wwwroot\Images\Navigation\math.png" />
+    <None Include="wwwroot\Images\Navigation\science.png" />
+    <None Include="wwwroot\Images\Navigation\social studies.png" />
+    <None Include="wwwroot\Images\Navigation\social studies2.png" />
+    <None Include="wwwroot\Images\StudentLogIn\bike.png" />
+    <None Include="wwwroot\Images\StudentLogIn\blocks.png" />
+    <None Include="wwwroot\Images\StudentLogIn\books.png" />
+    <None Include="wwwroot\Images\StudentLogIn\cat.png" />
+    <None Include="wwwroot\Images\StudentLogIn\dog.png" />
+    <None Include="wwwroot\Images\StudentLogIn\elephant.png" />
+    <None Include="wwwroot\Images\StudentLogIn\paint.png" />
+    <None Include="wwwroot\Images\StudentLogIn\slide.png" />
+    <None Include="wwwroot\Images\StudentLogIn\sun.png" />
+    <None Include="wwwroot\Images\StudentLogIn\swing.png" />
+    <None Include="wwwroot\Images\StudentLogIn\teddy bear.png" />
+    <None Include="wwwroot\Images\StudentLogIn\turtle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+</Project>

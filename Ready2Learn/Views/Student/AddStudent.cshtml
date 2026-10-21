@@ -1,0 +1,38 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="main-content">
+    <form asp-action="AddStudent">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col text-center">
+                <input type="submit" value="Add Student" class="btn btn-light me-md-3" />
+            </div>
+            <div class="col text-center">
+                <a class="btn btn-light ms-md-3" asp-action="Students" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">Students</a>
+            </div>
+        </div>
+    </form>
+</div>

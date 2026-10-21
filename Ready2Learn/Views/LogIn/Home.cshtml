@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container align-items-center">
+    <div class="row">
+        <div class="col-3 text-center">
+            <button class="btn btn-light square subject-card"
+                    onclick="location.href='@Url.Action("DisplayGamesBySubject", "Games", new Game(){ Subject = "ELA" })'"
+                    style="background-image: url('/Images/Navigation/ela.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+                    data-tts="ELA" data-tts-spell data-tts-trigger="hover focus" aria-label="ELA">
+            </button>
+            <br><br>
+            <b>ELA</b>
+        </div>
+
+        <div class="col-3 text-center">
+            <button class="btn btn-light square subject-card"
+                    onclick="location.href='@Url.Action("DisplayGamesBySubject", "Games", new Game(){ Subject = "Math" })'"
+                    style="background-image: url('/Images/Navigation/math.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+                    data-tts="Math" data-tts-trigger="hover focus" aria-label="Math">
+            </button>
+            <br><br>
+            <b>Math</b>
+        </div>
+
+        <div class="col-3 text-center">
+            <button class="btn btn-light square subject-card"
+                    onclick="location.href='@Url.Action("DisplayGamesBySubject", "Games", new Game(){ Subject = "Science" })'"                
+                    style="background-image: url('/Images/Navigation/science.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+                    data-tts="Science" data-tts-trigger="hover focus" aria-label="Science">
+            </button>
+            <br><br>
+            <b>Science</b>
+        </div>
+
+        <div class="col-3 text-center">
+            <button class="btn btn-light square subject-card"
+                    onclick="location.href='@Url.Action("DisplayGamesBySubject", "Games", new Game(){ Subject = "Social Studies" })'"
+                    style="background-image: url('/Images/Navigation/social studies.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+                    data-tts="Social Studies" data-tts-trigger="hover focus" aria-label="Social Studies">
+            </button>
+            <br><br>
+            <b>Social Studies</b>
+        </div>
+    </div>
+</div>

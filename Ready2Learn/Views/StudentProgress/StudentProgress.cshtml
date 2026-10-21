@@ -1,0 +1,359 @@
+﻿@model StudentProgress
+
+@{
+    ViewData["Title"] = "Student Progress";
+    var teacherId = ViewData["TeacherId"] ?? 0;
+}
+
+@{
+    // Projection for client-side use
+    var safeModel = new {
+        games = Model.Games.Select(g => new { id = g.ID, name = g.Name, subject = g.Subject }).ToList(),
+        students = Model.Students.Select(s => new { id = s.ID, firstName = s.FirstName, lastName = s.LastName }).ToList(),
+        results = Model.Results?.Select(r => new {
+            id = r.ID,
+            studentId = r.StudentID,
+            studentName = r.Student != null ? (r.Student.FirstName + " " + r.Student.LastName) : "",
+            gameId = r.GameID,
+            game = r.Game != null ? r.Game.Name : "",
+            subject = r.Game != null ? r.Game.Subject : "",
+            question = r.Question,
+            answers = r.Answers,
+            isPassed = r.Answers.Count == 1
+        }).Select(x => (object)x).ToList() ?? new List<object>()
+    };
+}
+
+@section Scripts {
+    <script>
+        const modelData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(safeModel));
+        const teacherId = @teacherId;
+
+        async function fetchFilteredResults(studentId, subject, gameId) {
+            const params = new URLSearchParams({ teacherId });
+            if (studentId && studentId !== 'All Students') params.append('studentId', studentId);
+            if (subject && subject !== 'All Subjects') params.append('subject', subject);
+            if (gameId && gameId !== 'All Games') params.append('gameId', gameId);
+
+            const resp = await fetch(`/StudentProgress/GetFilteredResults?${params.toString()}`);
+            if (!resp.ok) {
+                console.error("Failed to fetch filtered results", await resp.text());
+                return [];
+            }
+            const data = await resp.json();
+            modelData.results = data;
+            return data;
+        }
+
+        function adjustTableHeight() {
+            const controls = document.getElementById('controls');
+            const container = document.getElementById('table-container');
+            if (!controls || !container) return;
+            container.style.maxHeight = controls.clientHeight + 'px';
+            container.style.overflowY = 'auto';
+        }
+
+        function renderTable(results) {
+            results = results || modelData.results || [];
+            const table = document.getElementById('table');
+            if (!table) return;
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = '';
+
+            if (results.length === 0) {
+                const tr = document.createElement('tr');
+                tr.className = 'text-center';
+                const td = document.createElement('td');
+                td.colSpan = 5;
+                td.textContent = 'No results found';
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+                return;
+            }
+
+            for (const r of results) {
+                const tr = document.createElement('tr');
+                tr.className = 'text-center';
+
+                const studentName = r.studentName
+                    || (r.student && (r.student.firstName || r.student.first_name) ? ((r.student.firstName || r.student.first_name) + ' ' + (r.student.lastName || r.student.last_name || '')).trim() : '')
+                    || r.student || '';
+
+                const tdStudent = document.createElement('td'); tdStudent.textContent = studentName; tr.appendChild(tdStudent);
+                const tdSubject = document.createElement('td'); tdSubject.textContent = r.subject || r.subjectName || ''; tr.appendChild(tdSubject);
+                const tdGame = document.createElement('td'); tdGame.textContent = r.game || r.gameName || ''; tr.appendChild(tdGame);
+                const tdQuestion = document.createElement('td'); tdQuestion.textContent = r.question ?? ''; tr.appendChild(tdQuestion);
+
+                const tdAnswers = document.createElement('td');
+                let answersDisplay = '';
+                if (Array.isArray(r.answers)) {
+                    answersDisplay = r.answers.join(', ');
+                } else if (typeof r.answers === 'string') {
+                    try {
+                        const parsed = JSON.parse(r.answers);
+                        answersDisplay = Array.isArray(parsed) ? parsed.join(', ') : String(parsed);
+                    } catch {
+                        answersDisplay = r.answers;
+                    }
+                } else if (r.answers != null) {
+                    try { answersDisplay = JSON.stringify(r.answers); } catch { answersDisplay = String(r.answers); }
+                }
+                tdAnswers.textContent = answersDisplay;
+                tr.appendChild(tdAnswers);
+
+                tbody.appendChild(tr);
+            }
+        }
+
+        async function generateReport() {
+            const chartSelect = document.getElementById('chart-select');
+            const selected = chartSelect?.value;
+
+            document.getElementById('pie-chart').style.display = 'none';
+            document.getElementById('column-chart-wrapper').style.display = 'none';
+            document.getElementById('table-container').style.display = 'none';
+
+            if (selected === 'Pie Chart') document.getElementById('pie-chart').style.display = 'block';
+            if (selected === 'Column Chart') document.getElementById('column-chart-wrapper').style.display = 'block';
+            if (selected === 'Table') document.getElementById('table-container').style.display = 'block';
+
+            const student = document.getElementById('student-select')?.value;
+            const subject = document.getElementById('subject-select')?.value;
+            const game = document.getElementById('game-select')?.value;
+
+            try {
+                const results = await fetchFilteredResults(student, subject, game);
+                if (selected === 'Table') {
+                    adjustTableHeight();
+                    renderTable(results || modelData.results);
+                    return;
+                }
+
+                adjustChartDimensions();
+                if (selected === 'Pie Chart') drawPieChart();
+                if (selected === 'Column Chart') drawChart();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function adjustChartDimensions() {
+            const controls = document.getElementById('controls');
+            const charts = document.getElementById('charts');
+            const wrapper = document.getElementById('column-chart-wrapper');
+            const chartDiv = document.getElementById('column-chart');
+            if (!controls || !charts || !wrapper || !chartDiv) return;
+
+            const controlsHeight = controls.clientHeight || 400;
+            const targetHeight = Math.max(180, controlsHeight - 6);
+
+            charts.style.height = controlsHeight + 'px';
+            wrapper.style.height = targetHeight + 'px';
+            wrapper.style.overflowY = 'hidden';
+            chartDiv.style.height = targetHeight + 'px';
+            chartDiv.style.boxSizing = 'border-box';
+        }
+
+        window.addEventListener('load', () => { adjustTableHeight(); adjustChartDimensions(); });
+        window.addEventListener('resize', () => {
+            adjustTableHeight();
+            adjustChartDimensions();
+            if (typeof drawChart === 'function') drawChart();
+            if (typeof drawPieChart === 'function') drawPieChart();
+        });
+    </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawPieChart() {
+            const results = modelData.results || [];
+            const passedCount = results.filter(r => r.isPassed).length;
+            const failedCount = results.length - passedCount;
+
+            const chartDiv = document.getElementById('pie-chart');
+            if (chartDiv) chartDiv.style.background = 'none';
+
+            const data = google.visualization.arrayToDataTable([
+                ['Result', 'Count'],
+                ['Passed', passedCount],
+                ['Failed', failedCount]
+            ]);
+
+            const options = {
+                pieHole: 0.35,
+                width: 400,
+                height: 300,
+                legend: { position: 'top', alignment: 'center', textStyle: { fontSize: 12 } },
+                colors: ['#2ecc71', '#e74c3c'],
+                chartArea: { left: 10, top: 40, width: '100%', height: '80%' }
+            };
+
+            new google.visualization.PieChart(chartDiv).draw(data, options);
+        }
+
+        function drawChart() {
+            const results = modelData.results || [];
+            const countsByStudent = {};
+
+            for (const r of results) {
+                const student = r.studentName || (r.student ? ((r.student.firstName || r.student.first_name) + ' ' + (r.student.lastName || r.student.last_name || '')).trim() : 'Unknown');
+                const answers = Array.isArray(r.answers)
+                    ? r.answers
+                    : (typeof r.answers === 'string'
+                        ? (function () { try { const p = JSON.parse(r.answers); return Array.isArray(p) ? p : r.answers.split(',').map(x => x.trim()); } catch { return r.answers ? r.answers.split(',').map(x => x.trim()) : []; } })()
+                        : (r.answers ? [r.answers] : []));
+                const correctCount = answers.length > 0 ? 1 : 0;
+                const incorrectCount = Math.max(0, answers.length - 1);
+
+                if (!countsByStudent[student]) countsByStudent[student] = { incorrect: 0, correct: 0 };
+                countsByStudent[student].incorrect += incorrectCount;
+                countsByStudent[student].correct += correctCount;
+            }
+
+            const rows = [];
+            const studentNames = Object.keys(countsByStudent);
+            if (studentNames.length === 0 && modelData.students && modelData.students.length > 0) {
+                for (const s of modelData.students) rows.push([(s.firstName + " " + s.lastName).trim(), 0, 0]);
+            } else {
+                studentNames.sort((a, b) => a.localeCompare(b));
+                for (const name of studentNames) {
+                    const c = countsByStudent[name];
+                    rows.push([name, c.incorrect, c.correct]);
+                }
+            }
+
+            const dataArray = [['Student', 'Incorrect', 'Correct']].concat(rows);
+            const data = google.visualization.arrayToDataTable(dataArray);
+
+            const perStudentWidth = 90;
+            const minWidth = 300;
+            const totalWidth = Math.max(minWidth, perStudentWidth * Math.max(1, rows.length));
+
+            const charts = document.getElementById('charts');
+            const wrapper = document.getElementById('column-chart-wrapper');
+            const chartDiv = document.getElementById('column-chart');
+
+            const wrapperVisibleWidth = wrapper?.clientWidth ?? Math.floor((charts?.clientWidth ?? window.innerWidth) * 0.9);
+            const desiredChartWidth = Math.max(totalWidth, wrapperVisibleWidth);
+
+            if (chartDiv) {
+                chartDiv.style.minWidth = totalWidth + 'px';
+                chartDiv.style.width = desiredChartWidth + 'px';
+                chartDiv.style.height = (wrapper ? wrapper.clientHeight : 400) + 'px';
+                chartDiv.style.overflow = 'hidden';
+                chartDiv.style.boxSizing = 'border-box';
+            }
+
+            let maxValue = 0;
+            for (const r of rows) maxValue = Math.max(maxValue, r[1], r[2]);
+            const vMax = Math.max(5, Math.ceil(maxValue / 5) * 5);
+
+            const options = {
+                width: desiredChartWidth,
+                height: chartDiv ? chartDiv.clientHeight : 400,
+                bar: { groupWidth: "60%" },
+                legend: { position: "top", alignment: "center" },
+                colors: ['#e74c3c', '#2ecc71'],
+                chartArea: { left: 80, top: 20, width: '85%', height: '70%' },
+                vAxis: { viewWindowMode: 'explicit', viewWindow: { min: 0, max: vMax }, format: '0' }
+            };
+
+            new google.visualization.ColumnChart(chartDiv).draw(data, options);
+
+            if (wrapper) {
+                wrapper.style.overflowX = (desiredChartWidth > wrapperVisibleWidth) ? 'auto' : 'hidden';
+                wrapper.style.overflowY = 'hidden';
+            }
+        }
+    </script>
+}
+
+<style>
+    #container { display:flex; justify-content:space-evenly; width:100% }
+    #controls, #charts { flex:1; padding:15px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:12px }
+
+    #controls label, #controls select { width:80%; max-width:360px }
+    #controls button, #controls .btn { width:auto; white-space:nowrap; padding-left:1rem; padding-right:1rem }
+
+    #charts { display:flex; flex-direction:column; justify-content:center; align-items:center }
+
+    .pie-chart { width:300px; height:300px; border-radius:50%; background:conic-gradient(red 0% 30%, green 30% 100%); display:flex; align-items:center; justify-content:center; margin:0 auto }
+
+    .column-chart-wrapper {
+        width:90%; max-width:90%;
+        display:flex; justify-content:center; align-items:center;
+        overflow-x:auto; overflow-y:hidden; margin:0 auto; box-sizing:border-box;
+    }
+
+    .column-chart { margin:0 auto; min-width:300px; height:100%; box-sizing:border-box; overflow:hidden; display:flex; align-items:center; justify-content:center }
+
+    #table-container { width:90%; max-width:90%; display:flex; justify-content:center; align-items:center; margin:0 auto; box-sizing:border-box; overflow-y:auto }
+    table#table { width:auto !important; margin:0 auto; table-layout:auto }
+
+    #table thead th { position:sticky; top:0; background:#fff; z-index:2 }
+</style>
+
+<div class="main-content">
+    <div id="container">
+        <div id="controls">
+            <label for="chart-select">Choose Chart Type:</label>
+            <select id="chart-select">
+                <option value="Pie Chart">Pie Chart</option>
+                <option value="Column Chart">Column Chart</option>
+                <option value="Table">Table</option>
+            </select>
+
+            <label for="student-select">Choose Student(s):</label>
+            <select id="student-select">
+                <option value="All Students">All Students</option>
+                @foreach (Student student in Model.Students) {
+                    <option value="@student.ID">@student.FirstName @student.LastName</option>
+                }
+            </select>
+
+            <label for="subject-select">Choose Subject(s):</label>
+            <select id="subject-select" onchange="updateGameDropdown()">
+                <option value="All Subjects">All Subjects</option>
+                @foreach (string? subject in Model.Games.Select(g => g.Subject).Distinct()) {
+                    <option value="@subject">@subject</option>
+                }
+            </select>
+
+            <label for="game-select">Choose Game(s):</label>
+            <select id="game-select" onchange="updateSubjectDropdown()">
+                <option value="All Games">All Games</option>
+                @foreach (Game game in Model.Games) {
+                    <option value="@game.ID">@game.Name</option>
+                }
+            </select>
+
+            <div><button class="btn btn-light" onclick="generateReport()">Generate Report</button></div>
+        </div>
+
+        <div id="charts">
+            <div class="pie-chart" id="pie-chart" style="display:none"></div>
+
+            <div class="column-chart-wrapper" id="column-chart-wrapper" style="display:none">
+                <div class="column-chart" id="column-chart" style="min-width:600px"></div>
+            </div>
+
+            <div id="table-container" style="display:none">
+                <table class="table" id="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Student</th>
+                            <th>Subject</th>
+                            <th>Game</th>
+                            <th>Question</th>
+                            <th>Answers</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

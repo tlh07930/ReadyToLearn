@@ -1,0 +1,23 @@
+﻿@model Game
+
+@{
+    ViewData["Title"] = "Alphabet";
+}
+
+@{
+    int studentId = -1;
+    var cookies = Context.Request.Cookies;
+    if (cookies.ContainsKey("StudentID"))
+    {
+        int.TryParse(cookies["StudentID"], out studentId);
+    }
+    else if (cookies.ContainsKey("TeacherID"))
+    {
+        studentId = -1;
+    }
+
+    ViewData["GameName"] = "Alphabet";
+    ViewData["StudentId"] = studentId;
+}
+
+@await Html.PartialAsync("_GameTemplate")

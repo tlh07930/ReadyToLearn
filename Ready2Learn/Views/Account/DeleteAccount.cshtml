@@ -1,0 +1,70 @@
+﻿@model Teacher
+
+@{
+    ViewData["Title"] = "Delete Account";
+}
+
+<div class="main-content">
+    <div style="width: 65%;">
+        <div class="row" style="justify-content: space-evenly">
+            <div class="col" style="width: 35%">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" readonly />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col" style="width: 35%">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" readonly />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row" style="justify-content: space-evenly">
+            <div class="col" style="width: 35%">
+                <label asp-for="Username" class="control-label">Username</label>
+                <input asp-for="Username" class="form-control" readonly />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="col" style="width: 35%">
+                <label asp-for="PasswordHash" class="control-label">Password</label>
+                <input asp-for="PasswordHash" class="form-control" type="password" readonly />
+                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row" style="justify-content: space-evenly">
+            <div class="col" style="width: 35%">
+                <label asp-for="Grade" class="control-label">Grade</label>
+                <select asp-for="Grade" class="form-control">
+                    <option value="PK">Preschool</option>
+                    <option value="KG">Kindergarten</option>
+                    <option value="1">First Grade</option>
+                </select>
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+
+            <div class="col" style="width: 35%">
+                <label asp-for="ClassLink" class="control-label">Class Link</label>
+                <input asp-for="ClassLink" class="form-control" readonly />
+                <span asp-validation-for="ClassLink" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row" style="text-align: center;">
+            <div class="col text-center">
+                <form asp-action="DeleteConfirmed">
+                    <input type="hidden" asp-for="ID" />
+                    <input type="submit" value="Confirm" class="btn btn-danger me-md-3" />
+                </form>
+            </div>
+            <div class="col">
+                <a class="btn btn-light ms-md-3" asp-action="Account" asp-route-id="@Model.ID">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

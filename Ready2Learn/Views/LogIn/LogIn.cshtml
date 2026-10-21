@@ -1,0 +1,42 @@
+﻿@model Ready2Learn.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Log In";
+}
+
+<div class="main-content">
+    <div class="container align-items-center">
+        <div class="row text justify-content-center">
+            <div class="col-md-8">
+                <p><h1 style="text-align: center;">Ready2Learn</h1></p>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <form asp-action="LogIn" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-group">
+                                <label asp-for="Username" class="control-label"></label>
+                                <input asp-for="Username" class="form-control" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <br />
+
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control" type="password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <br />
+
+                            <div class="form-group text-center">
+                                <input type="submit" value="Log In" class="btn btn-light me-md-3" />
+                                <a class="btn btn-light ms-md-3" asp-action="CreateAccount">Create Account</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

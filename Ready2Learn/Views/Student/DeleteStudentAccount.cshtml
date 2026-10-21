@@ -1,0 +1,40 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Delete Student Account";
+}
+
+<div class="main-content">
+    <div class="delete-wrapper" style="display:block; width:100%; max-width:720px; margin:auto; padding:1rem;">
+        <div class="row">
+            <div class="col">
+                <label asp-for="FirstName" class="control-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" readonly />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" readonly />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-flex w-100" style="justify-content: space-evenly; align-items: center;">
+                    <form asp-action="DeleteStudentConfirmed" class="m-0">
+                        <input type="hidden" asp-for="ID" />
+                        <input type="submit" value="Confirm" class="btn btn-danger" />
+                    </form>
+
+                    <a class="btn btn-light" asp-action="Students" asp-route-teacherId="@Model.TeacherID">Students</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

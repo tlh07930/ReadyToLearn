@@ -1,0 +1,3 @@
+﻿Finish games
+Set up web link and link it to app
+Move database to cloud (to access from new web link)

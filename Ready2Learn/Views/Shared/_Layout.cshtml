@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Ready2Learn</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/Ready2Learn.styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+        <style>
+            /* Header & Footer Style */
+            .header, .footer {
+                height: 55px;
+                background-image: url('/Images/Navigation/banner.png');
+                background-size: 100%;
+                background-position: center;
+                padding: 10px;
+            }
+
+            /* Navbar Style */
+            .page-title {
+                float: left;
+                padding-left: 10px
+            }
+            .btn-group {
+                float: right;
+                padding-right: 10px;
+                background-color: transparent;
+            }
+            .right-border {
+                border-right: 2px solid black;
+            }
+            .button {
+                background-color: transparent;
+                border: none;
+                padding: 1px 10px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 12px;
+            }
+            .selected {
+                color: #555555;
+                text-decoration-line: underline;
+                text-decoration-thickness: 3px;
+                text-underline-offset: 4px;
+            }
+
+            /* Common Elements */
+            body {
+                height: 100%; /* Ensures the body can expand to the full height of the viewport */
+                margin: 0; /* Removes default browser margins, preventing scroll bars */
+                padding: 0; /* Removes default browser padding */
+                overflow: hidden; /* Explicitly hides any potential scroll bars */
+            }
+            .main-content-container {
+                display: flex;
+                flex-direction: column; /* Stacks children vertically */
+                height: 100vh; /* Ensures the container uses the full viewport height */
+                overflow: hidden; /* Prevents scroll bars on the container itself */
+            }
+            .main-content {
+                display: flex;
+                flex-grow: 1; /* This is the key: it grows to fill the available space */
+                padding-bottom: 55px;
+                overflow-y: auto; /* Adds a scroll bar *only* if content overflows this specific section */
+                justify-content: center;
+                align-items: center;
+            }
+            .common-button {
+                background-color: #e7e7e7;
+                border-radius: 8px;
+                border: 2px solid #e7e7e7;
+
+                min-width: 100px;
+                min-height: 100px;
+            }
+            /* Fixed square size so game buttons match subject buttons exactly */
+            .square {
+                width: 200px;
+                height: 200px;
+            }
+            .choice-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 200px;
+                font-weight: bold;
+            }
+
+            /* Enhanced game button styles — use the same solid gray as homepage subject buttons (btn-light) */
+            .game-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 16px;
+                padding: 12px;
+                text-decoration: none;
+                color: #212529; /* Bootstrap body/btn-light text color */
+                background-color: #f8f9fa; /* match Bootstrap btn-light background */
+                border: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+                transition: transform 0.12s ease, box-shadow 0.12s ease;
+                width: 200px;
+                height: 200px;
+                position: relative;
+                overflow: hidden;
+            }
+            .game-card .game-icon {
+                font-size: 48px;
+                color: #2b8cc4;
+                margin-bottom: 10px;
+            }
+            .game-card .game-title {
+                font-size: 1.25rem;
+                font-weight: 800;
+                line-height: 1.1;
+                text-align: center;
+                padding: 0 6px;
+            }
+            .game-card:hover, .game-card:focus {
+                transform: translateY(-6px);
+                box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+                text-decoration: none;
+            }
+
+            /* Subject button visuals: rounded corners, soft gradient overlay, shadow and hover lift — keep their background images */
+            .subject-card {
+                border-radius: 16px;
+                padding: 0;
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+                transition: transform 0.12s ease, box-shadow 0.12s ease;
+                background-color: transparent; /* background image applied inline on each button */
+            }
+            .subject-card::before {
+                /* subtle gradient overlay to match game cards */
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.08));
+                z-index: 1;
+                pointer-events: none;
+            }
+            .subject-card:active::before,
+            .subject-card:focus::before {
+                background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+            }
+            .subject-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+            }
+            .subject-card > * {
+                position: relative;
+                z-index: 2; /* ensure label or inner content sits above overlay if needed */
+            }
+            /* Keep same sizing as .square on small screens */
+            @@media (max-width: 576px) {
+                .subject-card, .square {
+                    width: 140px;
+                    height: 140px;
+                }
+                .game-card {
+                    width: 140px;
+                    height: 140px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="main-content-container">
+            <header class="header border-bottom box-shadow" style="display: flex; justify-content: space-between; align-items: center;">
+                @if (@ViewData["Title"].ToString() != "Log In" && @ViewData["Title"].ToString() != "Student Log In")
+                {
+                    <h1 class="page-title">@ViewData["Title"]</h1>
+                    
+                    <div class="btn-group">
+                        @if (@ViewData["Title"].ToString() == "Home")
+                        {
+                            <a class="button btn-light right-border selected" asp-action="Home" asp-controller="LogIn">
+                                <i class="bi bi-house-door"></i>
+                                <br>
+                                Home
+                            </a>
+                        } else
+                        {
+                            <a class="button btn-light right-border" asp-action="Home" asp-controller="LogIn">
+                                <i class="bi bi-house-door"></i>
+                                <br>
+                                Home
+                            </a>
+                        }
+                        @if (Context.Request.Cookies["TeacherID"] != null)
+                        {
+                            @if (ViewData["Title"]?.ToString() == "Account")
+                            {
+                                <a class="button btn-light right-border selected"
+                                    asp-action="Account" asp-controller="Account" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                    <i class="bi bi-person-circle"></i>
+                                    <br>
+                                    Account
+                                </a>
+                            } else
+                            {
+                                <a class="button btn-light right-border"
+                                    asp-action="Account" asp-controller="Account" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                    <i class="bi bi-person-circle"></i>
+                                    <br>
+                                    Account
+                                </a>
+                            }
+                            @if (ViewData["Title"]?.ToString() == "Students")
+                            {
+                                <a class="button btn-light right-border selected"
+                                    asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                    <br>
+                                    Students
+                                </a>
+                            } else
+                            {
+                                <a class="button btn-light right-border"
+                                    asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                    <br>
+                                    Students
+                                </a>
+                            }
+                            @if (ViewData["Title"]?.ToString() == "Student Progress")
+                            {
+                                <a class="button btn-light right-border selected"
+                                    asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                    <i class="bi bi-clipboard2-data"></i>
+                                    <br>
+                                    Student Progress
+                                </a>
+                            } else
+                            {
+                                <a class="button btn-light right-border"
+                                    asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                    <i class="bi bi-clipboard2-data"></i>
+                                    <br>
+                                    Student Progress
+                                </a>
+                            }
+                        }
+                        <a class="button btn-light" asp-action="LogOut" asp-controller="LogIn">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <br>
+                            Log Out
+                        </a>
+                    </div>
+                }
+            </header>
+            <main role="main" class="main-content">
+                @RenderBody()
+            </main>
+            <footer class="border-top footer text-muted"></footer>
+        </div>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/tts.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+</html>
