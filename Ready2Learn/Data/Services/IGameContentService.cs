@@ -7,11 +7,11 @@ namespace Ready2Learn.Data.Services
         /// <summary>
         /// Return all QA pairs for a given game name. Returns empty list when not found.
         /// </summary>
-        IReadOnlyList<GameQA> GetQuestions(string gameName);
+        IReadOnlyList<GameQA> GetQuestions(string gameName, string grade);
 
         /// <summary>
         /// Return a random QA pair for the game, or null if none.
         /// </summary>
-        GameQA? GetRandomQuestion(string gameName);
+        GameQA? GetRandomQuestion(string gameName, string grade);
     }
 }

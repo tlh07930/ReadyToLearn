@@ -5,47 +5,74 @@
 @model dynamic
 
 @{
-    string gameName = ViewData["GameName"] as string ?? (Model?.Name as string) ?? "Game";
-    string question = ViewData["Question"] as string ?? string.Empty;
-    string answer = ViewData["Answer"] as string ?? string.Empty;
-    var choices = ViewData["Choices"] as List<string> ?? new List<string>();
-    int studentId = ViewData["StudentId"] is int sid ? sid : -1;
+    string gameName = ViewData["GameName"] as string
+        ?? (Model?.Name as string)
+        ?? "Game";
+
+    string question = ViewData["Question"] as string
+        ?? string.Empty;
+
+    string answer = ViewData["Answer"] as string
+        ?? string.Empty;
+
+    string grade = ViewData["Grade"] as string
+        ?? string.Empty;
+
+    var choices = ViewData["Choices"] as List<string>
+        ?? new List<string>();
+
+    int studentId = ViewData["StudentId"] is int sid
+        ? sid
+        : -1;
 
     // If view didn't supply question/answer/choices, ask the content service for a random QA
     if (string.IsNullOrEmpty(question) || string.IsNullOrEmpty(answer) || choices.Count == 0)
     {
-        var qa = GameContentService.GetRandomQuestion(gameName);
+        var qa = GameContentService.GetRandomQuestion(
+            gameName,
+            grade);
+
         if (qa != null)
         {
             question = qa.Question;
             answer = qa.Answer;
 
             // Create choices from the same game's answers
-            var pool = GameContentService.GetQuestions(gameName).Select(g => g.Answer).Where(a => !string.IsNullOrEmpty(a)).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+            var pool = GameContentService
+                .GetQuestions(gameName, grade)
+                .Select(g => g.Answer)
+                .Where(a => !string.IsNullOrEmpty(a))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList();
 
             // Ensure we include the correct answer then add random distinct distractors
             choices = new List<string> { answer };
+
             var rnd = Random.Shared;
-            while (choices.Count < 4 && pool.Count > 0)
+            while (choices.Count < 4 &&
+                   choices.Count < pool.Count)
             {
-                var cand = pool[rnd.Next(0, pool.Count)];
-                if (!choices.Contains(cand, StringComparer.OrdinalIgnoreCase))
+                var candidate = pool[rnd.Next(pool.Count)];
+
+                if (!choices.Contains(
+                        candidate,
+                        StringComparer.OrdinalIgnoreCase))
                 {
-                    choices.Add(cand);
+                    choices.Add(candidate);
                 }
-                // if pool is too small we'll break naturally
-                if (choices.Count == pool.Count) break;
             }
 
             // Final shuffle
-            choices = choices.OrderBy(_ => Guid.NewGuid()).ToList();
+            choices = choices
+                .OrderBy(_ => Guid.NewGuid())
+                .ToList();
         }
         else
         {
             // Fallback minimal UI
-            question = question ?? "No question available";
-            answer = answer ?? string.Empty;
-            if (choices.Count == 0) choices = new List<string> { answer };
+            question = "No question available";
+            answer = string.Empty;
+            choices = new List<string>();
         }
     }
 }

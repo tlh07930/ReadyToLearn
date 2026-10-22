@@ -8,11 +8,19 @@ namespace Ready2Learn.Controllers
     {
         private readonly IGamesService _gamesService;
         private readonly IResultsService _resultsService;
+        private readonly IStudentsService _studentsService;
+        private readonly ITeachersService _teachersService;
 
-        public GamesController(IGamesService gamesService, IResultsService resultsService)
+        public GamesController(
+            IGamesService gamesService,
+            IResultsService resultsService,
+            IStudentsService studentsService,
+            ITeachersService teachersService)
         {
             _gamesService = gamesService;
             _resultsService = resultsService;
+            _studentsService = studentsService;
+            _teachersService = teachersService;
         }
 
         public async Task<IActionResult> DisplayGamesBySubject(string subject)
@@ -50,110 +58,137 @@ namespace Ready2Learn.Controllers
             return RedirectToAction("RhymeTime");
         }
 
+        private async Task<string?> GetCurrentGradeAsync()
+        {
+            if (Request.Cookies.TryGetValue("StudentID", out var studentCookie) &&
+                int.TryParse(studentCookie, out var studentId))
+            {
+                var student = await _studentsService.GetStudentByIdAsync(studentId);
+
+                if (student == null)
+                {
+                    return null;
+                }
+
+                var teacher = await _teachersService.GetTeacherByIdAsync(
+                    student.TeacherID);
+
+                return teacher?.Grade;
+            }
+
+            if (Request.Cookies.TryGetValue("TeacherID", out var teacherCookie) &&
+                int.TryParse(teacherCookie, out var teacherId))
+            {
+                var teacher = await _teachersService.GetTeacherByIdAsync(
+                    teacherId);
+
+                return teacher?.Grade;
+            }
+
+            return null;
+        }
+
+        private async Task<IActionResult> GetGameViewAsync(string gameName)
+        {
+            var game = await _gamesService.GetGameByNameAsync(gameName);
+
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Grade"] = await GetCurrentGradeAsync();
+
+            return View(game);
+        }
+
         /* ELA Games */
         public async Task<IActionResult> Alphabet()
         {
-            var game = await _gamesService.GetGameByNameAsync("Alphabet");
-            return View(game);
+            return await GetGameViewAsync("Alphabet");
         }
 
         public async Task<IActionResult> LetterSounds()
         {
-            var game = await _gamesService.GetGameByNameAsync("Letter Sounds");
-            return View(game);
+            return await GetGameViewAsync("Letter Sounds");
         }
 
         public async Task<IActionResult> PopcornWords()
         {
-            var game = await _gamesService.GetGameByNameAsync("Popcorn Words");
-            return View(game);
+            return await GetGameViewAsync("Popcorn Words");
         }
 
         public async Task<IActionResult> RhymeTime()
         {
-            var game = await _gamesService.GetGameByNameAsync("Rhyme Time");
-            return View(game);
+            return await GetGameViewAsync("Rhyme Time");
         }
 
         /* Math Games */
         public async Task<IActionResult> BeforeandAfter()
         {
-            var game = await _gamesService.GetGameByNameAsync("Before and After");
-            return View(game);
+            return await GetGameViewAsync("Before and After");
         }
 
         public async Task<IActionResult> CountBy10s()
         {
-            var game = await _gamesService.GetGameByNameAsync("Count By 10s");
-            return View(game);
+            return await GetGameViewAsync("Count By 10s");
         }
 
         public async Task<IActionResult> DaysoftheWeek()
         {
-            var game = await _gamesService.GetGameByNameAsync("Days of the Week");
-            return View(game);
+            return await GetGameViewAsync("Days of the Week");
         }
 
         public async Task<IActionResult> FastFacts()
         {
-            var game = await _gamesService.GetGameByNameAsync("Fast Facts");
-            return View(game);
+            return await GetGameViewAsync("Fast Facts");
         }
 
         public async Task<IActionResult> Money()
         {
-            var game = await _gamesService.GetGameByNameAsync("Money");
-            return View(game);
+            return await GetGameViewAsync("Money");
         }
 
         public async Task<IActionResult> MoreorLess()
         {
-            var game = await _gamesService.GetGameByNameAsync("More or Less");
-            return View(game);
+            return await GetGameViewAsync("More or Less");
         }
 
         public async Task<IActionResult> Time()
         {
-            var game = await _gamesService.GetGameByNameAsync("Time");
-            return View(game);
+            return await GetGameViewAsync("Time");
         }
 
         /* Science Games */
         public async Task<IActionResult> BigandSmall()
         {
-            var game = await _gamesService.GetGameByNameAsync("Big and Small");
-            return View(game);
+            return await GetGameViewAsync("Big and Small");
         }
 
         public async Task<IActionResult> Colors()
         {
-            var game = await _gamesService.GetGameByNameAsync("Colors");
-            return View(game);
+            return await GetGameViewAsync("Colors");
         }
 
         public async Task<IActionResult> FixIt()
         {
-            var game = await _gamesService.GetGameByNameAsync("Fix It");
-            return View(game);
+            return await GetGameViewAsync("Fix It");
         }
 
         public async Task<IActionResult> Seasons()
         {
-            var game = await _gamesService.GetGameByNameAsync("Seasons");
-            return View(game);
+            return await GetGameViewAsync("Seasons");
         }
 
         public async Task<IActionResult> Weather()
         {
-            var game = await _gamesService.GetGameByNameAsync("Weather");
-            return View(game);
+            return await GetGameViewAsync("Weather");
         }
 
         /* Social Studies Games */
         public async Task<IActionResult> Maps()
         {
-            var game = await _gamesService.GetGameByNameAsync("Maps");
-            return View(game);
+            return await GetGameViewAsync("Maps");
         }
     }
 }
