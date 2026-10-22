@@ -1,7 +1,7 @@
 ﻿@model Student
 
 @{
-    ViewData["Title"] = "Create Account";
+    ViewData["Title"] = "Add Student/Child";
 }
 
 <div class="main-content">
@@ -28,10 +28,10 @@
 
         <div class="row">
             <div class="col text-center">
-                <input type="submit" value="Add Student" class="btn btn-light me-md-3" />
+                <input type="submit" value="Add Student/Child" class="btn btn-light me-md-3" />
             </div>
             <div class="col text-center">
-                <a class="btn btn-light ms-md-3" asp-action="Students" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">Students</a>
+                <a class="btn btn-light ms-md-3" asp-action="Students" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">Students/Children</a>
             </div>
         </div>
     </form>

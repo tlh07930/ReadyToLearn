@@ -21,7 +21,7 @@ namespace Ready2Learn.Controllers
 
             if (teacherAccount == null) return View("NotFound");
 
-            ViewData["ClassLinkFull"] = $"{Request.Scheme}://{Request.Host}/class/{teacherAccount.ClassLink ?? string.Empty}";
+            ViewData["ClassLinkFull"] = $"{Request.Scheme}://{Request.Host}/{teacherAccount.ClassLink ?? string.Empty}";
 
             return View("Account", teacherAccount);
         }

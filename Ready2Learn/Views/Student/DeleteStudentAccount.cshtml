@@ -1,7 +1,7 @@
 ﻿@model Student
 
 @{
-    ViewData["Title"] = "Delete Student Account";
+    ViewData["Title"] = "Delete Student/Child Account";
 }
 
 <div class="main-content">
@@ -32,7 +32,7 @@
                         <input type="submit" value="Confirm" class="btn btn-danger" />
                     </form>
 
-                    <a class="btn btn-light" asp-action="Students" asp-route-teacherId="@Model.TeacherID">Students</a>
+                    <a class="btn btn-light" asp-action="Students" asp-route-teacherId="@Model.TeacherID">Students/Children</a>
                 </div>
             </div>
         </div>

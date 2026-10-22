@@ -1,7 +1,7 @@
 ﻿@model StudentProgress
 
 @{
-    ViewData["Title"] = "Student Progress";
+    ViewData["Title"] = "Student/Child Progress";
     var teacherId = ViewData["TeacherId"] ?? 0;
 }
 
@@ -31,7 +31,7 @@
 
         async function fetchFilteredResults(studentId, subject, gameId) {
             const params = new URLSearchParams({ teacherId });
-            if (studentId && studentId !== 'All Students') params.append('studentId', studentId);
+            if (studentId && studentId !== 'All Students/Children') params.append('studentId', studentId);
             if (subject && subject !== 'All Subjects') params.append('subject', subject);
             if (gameId && gameId !== 'All Games') params.append('gameId', gameId);
 
@@ -225,7 +225,7 @@
                 }
             }
 
-            const dataArray = [['Student', 'Incorrect', 'Correct']].concat(rows);
+            const dataArray = [['Student/Child', 'Incorrect', 'Correct']].concat(rows);
             const data = google.visualization.arrayToDataTable(dataArray);
 
             const perStudentWidth = 90;
@@ -306,9 +306,9 @@
                 <option value="Table">Table</option>
             </select>
 
-            <label for="student-select">Choose Student(s):</label>
+            <label for="student-select">Choose Student(s)/Child(ren):</label>
             <select id="student-select">
-                <option value="All Students">All Students</option>
+                <option value="All Students/Children">All Students/Children</option>
                 @foreach (Student student in Model.Students) {
                     <option value="@student.ID">@student.FirstName @student.LastName</option>
                 }
@@ -344,11 +344,11 @@
                 <table class="table" id="table">
                     <thead>
                         <tr class="text-center">
-                            <th>Student</th>
+                            <th>Student/Child</th>
                             <th>Subject</th>
                             <th>Game</th>
                             <th>Question</th>
-                            <th>Answers</th>
+                            <th>Answer(s)</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

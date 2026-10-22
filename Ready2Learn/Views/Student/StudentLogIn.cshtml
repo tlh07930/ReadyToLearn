@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Student>
 
 @{
-    ViewData["Title"] = "Student Log In";
+    ViewData["Title"] = "Student/Child Log In";
 }
 
 <style>
@@ -59,7 +59,7 @@
         var activeStudent = studentSelect ? studentSelect.value.trim() : "";
         if (!activeStudent) {
             var selErr = document.getElementById('studentSelectError');
-            if (selErr) selErr.textContent = "Please select a student.";
+            if (selErr) selErr.textContent = "Please select a student/child.";
             // Prevent form submit
             e.preventDefault();
             return false;
@@ -117,7 +117,7 @@
 
     <div class="form-group">
         <select class="form-control" id="studentSelect" style="text-align-last: center;">
-            <option value="">-- Select a Student --</option>
+            <option value="">-- Select a Student/Child --</option>
             @foreach (Student student in Model)
             {
                 <option value="@student.FirstName @student.LastName">@student.FirstName @student.LastName</option>

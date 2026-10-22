@@ -176,7 +176,7 @@
     <body>
         <div class="main-content-container">
             <header class="header border-bottom box-shadow" style="display: flex; justify-content: space-between; align-items: center;">
-                @if (@ViewData["Title"].ToString() != "Log In" && @ViewData["Title"].ToString() != "Student Log In")
+                @if (@ViewData["Title"].ToString() != "Log In" && @ViewData["Title"].ToString() != "Student/Child Log In")
                 {
                     <h1 class="page-title">@ViewData["Title"]</h1>
                     
@@ -215,13 +215,13 @@
                                     Account
                                 </a>
                             }
-                            @if (ViewData["Title"]?.ToString() == "Students")
+                        @if (ViewData["Title"]?.ToString() == "Students/Children")
                             {
                                 <a class="button btn-light right-border selected"
                                     asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
                                     <i class="bi bi-person-lines-fill"></i>
                                     <br>
-                                    Students
+                                    Students/Children
                                 </a>
                             } else
                             {
@@ -229,16 +229,16 @@
                                     asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
                                     <i class="bi bi-person-lines-fill"></i>
                                     <br>
-                                    Students
+                                    Students/Children
                                 </a>
                             }
-                            @if (ViewData["Title"]?.ToString() == "Student Progress")
+                            @if (ViewData["Title"]?.ToString() == "Student/Child Progress")
                             {
                                 <a class="button btn-light right-border selected"
                                     asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
                                     <i class="bi bi-clipboard2-data"></i>
                                     <br>
-                                    Student Progress
+                                    Student/Child Progress
                                 </a>
                             } else
                             {
@@ -246,7 +246,7 @@
                                     asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
                                     <i class="bi bi-clipboard2-data"></i>
                                     <br>
-                                    Student Progress
+                                    Student/Child Progress
                                 </a>
                             }
                         }

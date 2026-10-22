@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Account";
-    var fullClassLink = ViewData["ClassLinkFull"] as string ?? $"/class/{Model?.ClassLink ?? string.Empty}";
+    var fullClassLink = ViewData["ClassLinkFull"] as string ?? $"/{Model?.ClassLink ?? string.Empty}";
     var passwordMask = !string.IsNullOrEmpty(Model?.PasswordHash) ? new string('•', 8) : string.Empty;
 }
 
@@ -45,7 +45,7 @@
             </div>
 
             <div class="col classlink-input-container" style="width: 35%">
-                <label asp-for="ClassLink" class="control-label">Class Link</label>
+                <label asp-for="ClassLink" class="control-label">Class/Family Link</label>
 
                 <div class="input-group">
                     <input type="text" id="fullClassLink" class="form-control" value="@fullClassLink" readonly />

@@ -13,8 +13,8 @@ namespace Ready2Learn.Controllers
             _teachersService = teachersService;
         }
 
-        // Public class links use the pattern: /class/{classLink}
-        [HttpGet("/class/{classLink}")]
+        // Public family links use the pattern: /{classLink}
+        [HttpGet("/{classLink}", Order = 100)]
         public async Task<IActionResult> Index(string classLink)
         {
             if (string.IsNullOrWhiteSpace(classLink))
@@ -22,15 +22,15 @@ namespace Ready2Learn.Controllers
                 return NotFound();
             }
 
-            // Look up teacher by class link (service will handle case/trim)
+            // Look up the adult account by its family link.
             var teacher = await _teachersService.GetTeacherByClassLinkAsync(classLink.Trim());
+
             if (teacher == null)
             {
-                // Return a NotFound or a friendly view for missing class links.
                 return View("ClassNotFound");
             }
 
-            // Redirect to StudentController.StudentLogIn to show the student login list for that teacher.
+            // Redirect to the student/child login list for the adult account.
             return RedirectToAction("StudentLogIn", "Student", new { teacherId = teacher.ID });
         }
     }
