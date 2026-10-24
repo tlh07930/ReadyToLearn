@@ -14,7 +14,18 @@ namespace Ready2Learn
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
             // DbContext Configuration
-            builder.Services.AddDbContext<Ready2LearnDbContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<Ready2LearnDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString, sqlOptions =>
+                {
+                    sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        errorNumbersToAdd: null);
+
+                    sqlOptions.CommandTimeout(30);
+                });
+            });
 
             // Services Configuration
             //builder.Services.AddScoped<IDisplayStateService, DisplayStateService>();
