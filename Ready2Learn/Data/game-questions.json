@@ -148,6 +148,26 @@
       {
         "question": "Which letter starts the word fish?",
         "answer": "F"
+      },
+      {
+        "question": "Which letter starts the word kite?",
+        "answer": "K"
+      },
+      {
+        "question": "Which letter starts the word apple?",
+        "answer": "A"
+      },
+      {
+        "question": "Which letter starts the word zebra?",
+        "answer": "Z"
+      },
+      {
+        "question": "Which letter starts the word tree?",
+        "answer": "T"
+      },
+      {
+        "question": "Which letter starts the word jellybean?",
+        "answer": "J"
       }
     ],
     "KG": [
@@ -170,6 +190,26 @@
       {
         "question": "Which letter is the first letter of cat?",
         "answer": "C"
+      },
+      {
+        "question": "Which letter comes after O?",
+        "answer": "P"
+      },
+      {
+        "question": "Which letter comes before G?",
+        "answer": "F"
+      },
+      {
+        "question": "Which letter starts the word pumpkin?",
+        "answer": "P"
+      },
+      {
+        "question": "Which letter starts the word van?",
+        "answer": "V"
+      },
+      {
+        "question": "Which letter is between L and N?",
+        "answer": "M"
       }
     ],
     "1": [
@@ -192,6 +232,26 @@
       {
         "question": "Which letter is the last letter in jump?",
         "answer": "P"
+      },
+      {
+        "question": "Which letter comes before W?",
+        "answer": "V"
+      },
+      {
+        "question": "Which letter comes after Y?",
+        "answer": "Z"
+      },
+      {
+        "question": "Which letter starts the word volcano?",
+        "answer": "V"
+      },
+      {
+        "question": "Which letter is between T and V?",
+        "answer": "U"
+      },
+      {
+        "question": "Which letter is the first letter in zebra?",
+        "answer": "Z"
       }
     ]
   },
