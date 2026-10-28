@@ -20,6 +20,26 @@
       {
         "question": "What rhymes with fish?",
         "answer": "dish"
+      },
+      {
+        "question": "What rhymes with jam?",
+        "answer": "ham"
+      },
+      {
+        "question": "What rhymes with bell?",
+        "answer": "shell"
+      },
+      {
+        "question": "What rhymes with sled?",
+        "answer": "bed"
+      },
+      {
+        "question": "What rhymes with boat?",
+        "answer": "coat"
+      },
+      {
+        "question": "What rhymes with light?",
+        "answer": "bright"
       }
     ],
     "KG": [
@@ -42,6 +62,26 @@
       {
         "question": "What rhymes with play?",
         "answer": "day"
+      },
+      {
+        "question": "What rhymes with king?",
+        "answer": "ring"
+      },
+      {
+        "question": "What rhymes with slide?",
+        "answer": "ride"
+      },
+      {
+        "question": "What rhymes with fox?",
+        "answer": "box"
+      },
+      {
+        "question": "What rhymes with mug?",
+        "answer": "bug"
+      },
+      {
+        "question": "What rhymes with rain?",
+        "answer": "train"
       }
     ],
     "1": [
@@ -64,6 +104,26 @@
       {
         "question": "What rhymes with clean?",
         "answer": "green"
+      },
+      {
+        "question": "What rhymes with spark?",
+        "answer": "dark"
+      },
+      {
+        "question": "What rhymes with tune?",
+        "answer": "moon"
+      },
+      {
+        "question": "What rhymes with chalk?",
+        "answer": "walk"
+      },
+      {
+        "question": "What rhymes with stream?",
+        "answer": "dream"
+      },
+      {
+        "question": "What rhymes with brave?",
+        "answer": "save"
       }
     ]
   },
