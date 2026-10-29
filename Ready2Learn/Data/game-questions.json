@@ -1905,52 +1905,112 @@
   "Seasons": {
     "PK": [
       {
-        "question": "Which season is usually cold and may have snow?",
-        "answer": "Winter"
-      },
-      {
-        "question": "Which season is usually warm and has flowers?",
-        "answer": "Spring"
-      },
-      {
-        "question": "Which season is usually hot?",
+        "question": "What season is the hottest?",
         "answer": "Summer"
       },
       {
-        "question": "Which season has many leaves changing color?",
+        "question": "What season has the most snow?",
+        "answer": "Winter"
+      },
+      {
+        "question": "What season do flowers begin to bloom?",
+        "answer": "Spring"
+      },
+      {
+        "question": "What season is the leaves change color and fall to the ground?",
         "answer": "Fall"
       },
       {
-        "question": "Which season comes after winter?",
+        "question": "Which season is usually cold and snowy?",
+        "answer": "Winter"
+      },
+      {
+        "question": "Which season is hot and sunny?",
+        "answer": "Summer"
+      },
+      {
+        "question": "What season comes after winter?",
         "answer": "Spring"
+      },
+      {
+        "question": "What season comes after summer?",
+        "answer": "Fall"
+      },
+      {
+        "question": "Which season is best for playing in the snow?",
+        "answer": "Winter"
+      },
+      {
+        "question": "Which season is best for wearing shorts and sandals?",
+        "answer": "Summer"
       }
     ],
     "KG": [
       {
-        "question": "Which season comes after spring?",
-        "answer": "Summer"
+        "question": "What season is the weather usually coldest?",
+        "answer": "Winter"
       },
       {
-        "question": "Which season comes before winter?",
-        "answer": "Fall"
-      },
-      {
-        "question": "In which season do many leaves fall from trees?",
-        "answer": "Fall"
-      },
-      {
-        "question": "In which season are days often hottest?",
-        "answer": "Summer"
-      },
-      {
-        "question": "In which season do many plants begin growing?",
+        "question": "What season is usually the time when flowers start to grow?",
         "answer": "Spring"
+      },
+      {
+        "question": "What season is usually warm and sunny with school ending?",
+        "answer": "Summer"
+      },
+      {
+        "question": "What season is usually cooler and has leaves falling?",
+        "answer": "Fall"
+      },
+      {
+        "question": "Which season comes before summer?",
+        "answer": "Spring"
+      },
+      {
+        "question": "Which season comes after fall?",
+        "answer": "Winter"
+      },
+      {
+        "question": "What season usually has the most rain and new growth?",
+        "answer": "Spring"
+      },
+      {
+        "question": "What season is known for pumpkins and harvest?",
+        "answer": "Fall"
+      },
+      {
+        "question": "Which season do people wear coats and boots more often?",
+        "answer": "Winter"
+      },
+      {
+        "question": "Which season has the longest days and hottest weather?",
+        "answer": "Summer"
       }
     ],
     "1": [
       {
-        "question": "What causes seasonal changes during the year?",
-        "answer": "Earth's movement around the Sun"
+        "question": "Which season comes right before summer?",
+        "answer": "Spring"
+      },
+      {
+        "question": "Which season comes right after spring?",
+        "answer": "Summer"
+      },
+      {
+        "question": "Which season comes right before winter?",
+        "answer": "Fall"
+      },
+      {
+        "question": "Which season comes right after fall?",
+        "answer": "Winter"
+      },
+      {
+        "question": "What season is best for planting seeds?",
+        "answer": "Spring"
+      },
+      {
+        "question": "What season is associated with leaves changing color?",
+        "answer": "Fall"
       },
       {
         "question": "Which season usually has the shortest days?",
@@ -1961,12 +2021,12 @@
         "answer": "Summer"
       },
       {
-        "question": "What pattern can help us predict the next season?",
-        "answer": "The repeating yearly cycle"
+        "question": "Which season is usually the time for school to begin again after summer?",
+        "answer": "Fall"
       },
       {
-        "question": "How do many deciduous trees respond to fall?",
-        "answer": "Their leaves change color and fall"
+        "question": "Which season is often called the season of new growth?",
+        "answer": "Spring"
       }
     ]
   },
