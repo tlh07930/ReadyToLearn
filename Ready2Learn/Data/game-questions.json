@@ -258,46 +258,86 @@
   "Letter Sounds": {
     "PK": [
       {
-        "question": "What sound begins the word sun?",
-        "answer": "S"
+        "question": "Which word begins with the same sound as sun?",
+        "answer": "sock"
       },
       {
-        "question": "What sound begins the word moon?",
-        "answer": "M"
+        "question": "Which word begins with the same sound as moon?",
+        "answer": "mask"
       },
       {
-        "question": "What sound begins the word pig?",
-        "answer": "P"
+        "question": "Which word begins with the same sound as pig?",
+        "answer": "pen"
       },
       {
-        "question": "What sound begins the word dog?",
-        "answer": "D"
+        "question": "Which word begins with the same sound as dog?",
+        "answer": "doll"
       },
       {
-        "question": "What sound begins the word fish?",
-        "answer": "F"
+        "question": "Which word begins with the same sound as fish?",
+        "answer": "fan"
+      },
+      {
+        "question": "Which word begins with the same sound as ball?",
+        "answer": "bat"
+      },
+      {
+        "question": "Which word begins with the same sound as kite?",
+        "answer": "kid"
+      },
+      {
+        "question": "Which word begins with the same sound as zebra?",
+        "answer": "zoo"
+      },
+      {
+        "question": "Which word begins with the same sound as tree?",
+        "answer": "tiger"
+      },
+      {
+        "question": "Which word begins with the same sound as jellybean?",
+        "answer": "jar"
       }
     ],
     "KG": [
       {
-        "question": "What sound does the letter B make?",
-        "answer": "Buh"
+        "question": "Which word begins with the same sound as ball?",
+        "answer": "bat"
       },
       {
-        "question": "What sound does the letter M make?",
-        "answer": "Mmm"
+        "question": "Which word begins with the same sound as kite?",
+        "answer": "kid"
       },
       {
-        "question": "What sound does the letter S make?",
-        "answer": "Sss"
+        "question": "Which word begins with the same sound as zebra?",
+        "answer": "zoo"
       },
       {
-        "question": "What sound begins the word cat?",
-        "answer": "C"
+        "question": "Which word begins with the same sound as tree?",
+        "answer": "tiger"
       },
       {
-        "question": "What sound ends the word dog?",
-        "answer": "G"
+        "question": "Which word begins with the same sound as jump?",
+        "answer": "jar"
+      },
+      {
+        "question": "Which word begins with the same sound as moon?",
+        "answer": "map"
+      },
+      {
+        "question": "Which word begins with the same sound as sun?",
+        "answer": "socks"
+      },
+      {
+        "question": "Which word begins with the same sound as fish?",
+        "answer": "fan"
+      },
+      {
+        "question": "Which word begins with the same sound as dog?",
+        "answer": "doll"
+      },
+      {
+        "question": "Which word begins with the same sound as pig?",
+        "answer": "pen"
       }
     ],
     "1": [
@@ -320,6 +360,26 @@
       {
         "question": "Which word has the long A sound?",
         "answer": "cake"
+      },
+      {
+        "question": "Which word begins with the same sound as cake?",
+        "answer": "cat"
+      },
+      {
+        "question": "Which word begins with the same sound as goat?",
+        "answer": "game"
+      },
+      {
+        "question": "Which word ends with the same sound as boat?",
+        "answer": "coat"
+      },
+      {
+        "question": "Which word begins with the same sound as duck?",
+        "answer": "dog"
+      },
+      {
+        "question": "Which word has the short I sound?",
+        "answer": "fish"
       }
     ]
   },

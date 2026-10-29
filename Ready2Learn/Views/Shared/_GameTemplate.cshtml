@@ -105,9 +105,11 @@
             if (string.Equals(choice, answer, StringComparison.OrdinalIgnoreCase))
             {
                 <div class="col-3 text-center">
-                    <button type="button" class="btn btn-light square choice-button"
+                    <button type="button"
+                            class="btn btn-light square choice-button"
                             onclick='submitResult(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(choice)), this)'
-                            data-tts="@choice" data-tts-trigger="hover focus">
+                            data-tts="@choice"
+                            data-tts-trigger="hover focus">
                         @choice
                     </button>
                 </div>
@@ -115,9 +117,11 @@
             else
             {
                 <div class="col-3 text-center">
-                    <button type="button" class="btn btn-light square choice-button"
-                            onclick='addGuess(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(choice)), this)'
-                            data-tts="@choice" data-tts-trigger="hover focus">
+                    <button type="button"
+                            class="btn btn-light square choice-button"
+                            onclick='submitResult(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(choice)), this)'
+                            data-tts="@choice"
+                            data-tts-trigger="hover focus">
                         @choice
                     </button>
                 </div>
