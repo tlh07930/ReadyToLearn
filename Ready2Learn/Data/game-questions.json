@@ -1641,68 +1641,134 @@
   "Colors": {
     "PK": [
       {
-        "question": "What color is grass usually?",
-        "answer": "Green"
+        "question": "What color is the sun?",
+        "answer": "yellow"
       },
       {
-        "question": "What color is a banana usually?",
-        "answer": "Yellow"
+        "question": "What color is grass?",
+        "answer": "green"
       },
       {
-        "question": "What color is the sky on a sunny day?",
-        "answer": "Blue"
-      },
-      {
-        "question": "What color is an orange?",
-        "answer": "Orange"
+        "question": "What color is the sky?",
+        "answer": "blue"
       },
       {
         "question": "What color is a stop sign?",
-        "answer": "Red"
+        "answer": "red"
+      },
+      {
+        "question": "What color is snow?",
+        "answer": "white"
+      },
+      {
+        "question": "What color is a pumpkin?",
+        "answer": "orange"
+      },
+      {
+        "question": "What color is a banana?",
+        "answer": "yellow"
+      },
+      {
+        "question": "What color is a leaf?",
+        "answer": "green"
+      },
+      {
+        "question": "What color is a cloud?",
+        "answer": "white"
+      },
+      {
+        "question": "What color is a school bus?",
+        "answer": "yellow"
       }
     ],
     "KG": [
       {
-        "question": "What color do red and yellow make when mixed?",
-        "answer": "Orange"
+        "question": "What color is a fire truck?",
+        "answer": "red"
       },
       {
-        "question": "What color do blue and yellow make when mixed?",
-        "answer": "Green"
+        "question": "What color is the ocean?",
+        "answer": "blue"
       },
       {
-        "question": "What color do red and blue make when mixed?",
-        "answer": "Purple"
+        "question": "What color are leaves on a tree?",
+        "answer": "green"
       },
       {
-        "question": "Which color is lighter: white or black?",
-        "answer": "White"
+        "question": "What color is a school bus?",
+        "answer": "yellow"
       },
       {
-        "question": "Which color is darker: navy blue or sky blue?",
-        "answer": "Navy blue"
+        "question": "What color is a pumpkin at Halloween?",
+        "answer": "orange"
+      },
+      {
+        "question": "What color is a cloud?",
+        "answer": "white"
+      },
+      {
+        "question": "What color is an orange?",
+        "answer": "orange"
+      },
+      {
+        "question": "What color is a stop sign?",
+        "answer": "red"
+      },
+      {
+        "question": "What color is fresh grass?",
+        "answer": "green"
+      },
+      {
+        "question": "What color is the sun?",
+        "answer": "yellow"
       }
     ],
     "1": [
       {
-        "question": "What happens when white is added to a color?",
-        "answer": "It becomes lighter"
+        "question": "Which color is made by mixing red and blue?",
+        "answer": "purple",
       },
       {
-        "question": "What happens when black is added to a color?",
-        "answer": "It becomes darker"
+        "question": "Which color is made by mixing yellow and blue?",
+        "answer": "green",
       },
       {
-        "question": "Which property can be used to classify materials?",
-        "answer": "Color"
+        "question": "Which color is made by mixing red and yellow?",
+        "answer": "orange",
       },
       {
-        "question": "Which color absorbs more light: black or white?",
-        "answer": "Black"
+        "question": "Which color is a primary color?",
+        "answer": "red",
+        "options": [ "red", "purple", "green", "orange" ]
       },
       {
-        "question": "Which color reflects more light: black or white?",
-        "answer": "White"
+        "question": "Which color is a primary color?",
+        "answer": "blue",
+        "options": [ "blue", "green", "purple", "orange" ]
+      },
+      {
+        "question": "Which color is a primary color?",
+        "answer": "yellow",
+        "options": [ "yellow", "orange", "green", "purple" ]
+      },
+      {
+        "question": "Which color is a secondary color?",
+        "answer": "green",
+        "options": [ "green", "red", "blue", "yellow" ]
+      },
+      {
+        "question": "Which color is a secondary color?",
+        "answer": "purple",
+        "options": [ "purple", "blue", "red", "yellow" ]
+      },
+      {
+        "question": "Which color is a secondary color?",
+        "answer": "orange",
+        "options": [ "orange", "yellow", "red", "blue" ]
+      },
+      {
+        "question": "Which color is between red and yellow on the color wheel?",
+        "answer": "orange"
       }
     ]
   },
