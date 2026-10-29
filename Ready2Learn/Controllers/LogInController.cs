@@ -25,6 +25,18 @@ namespace Ready2Learn.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAccount(TeacherCreateViewModel model)
         {
+            var trimmedUsername = model.Username?.Trim();
+            if (!string.IsNullOrWhiteSpace(trimmedUsername))
+            {
+                model.Username = trimmedUsername;
+            }
+
+            var existingUsername = await _teacherService.GetTeacherByUsernameAsync(model.Username);
+            if (existingUsername != null)
+            {
+                ModelState.AddModelError("Username", "This username is already in use. Please choose a different username.");
+            }
+
             // Ensure ClassLink is unique if provided
             if (!string.IsNullOrWhiteSpace(model.ClassLink))
             {

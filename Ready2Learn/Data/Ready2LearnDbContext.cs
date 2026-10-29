@@ -23,8 +23,9 @@ namespace Ready2Learn.Data
             modelBuilder.Entity<Student>().HasMany(r => r.Results);
 
             modelBuilder.Entity<Teacher>().HasKey(t => t.ID);
+            modelBuilder.Entity<Teacher>().HasIndex(t => t.Username).IsUnique();
             modelBuilder.Entity<Teacher>().HasMany(s => s.Students);
-            
+
             base.OnModelCreating(modelBuilder);
         }
 

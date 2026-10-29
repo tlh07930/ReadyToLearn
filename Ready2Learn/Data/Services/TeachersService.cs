@@ -61,6 +61,19 @@ namespace Ready2Learn.Data.Services
             return teacher;
         }
 
+        public async Task<Teacher> GetTeacherByUsernameAsync(string username)
+        {
+            if (string.IsNullOrWhiteSpace(username)) return null;
+
+            var normalized = username.Trim();
+            var normalizedUpper = normalized.ToUpperInvariant();
+
+            Teacher? teacher = await _context.Teachers
+                .FirstOrDefaultAsync(t => t.Username != null && t.Username.ToUpper() == normalizedUpper);
+
+            return teacher;
+        }
+
         public async Task<Teacher> UpdateTeacherAsync(Teacher newTeacher)
         {
             // Controller should set PasswordHash if a new password was provided.

@@ -20,7 +20,7 @@ namespace Ready2Learn.Models
         [Required(ErrorMessage = "Username is required")]
         [StringLength(100)]
         public required string Username { get; set; }
-        
+
         // Persisted hashed password (mapped)
         public string? PasswordHash { get; set; }
 

@@ -17,6 +17,7 @@ namespace Ready2Learn.Models
 
         [Required(ErrorMessage = "Username is required")]
         [StringLength(100)]
+        [RegularExpression(@"^[A-Za-z0-9._-]+$", ErrorMessage = "Username can only contain letters, numbers, periods, underscores, and hyphens.")]
         public required string Username { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
