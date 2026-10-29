@@ -1182,67 +1182,157 @@
     "PK": [
       {
         "question": "Which is more: 2 or 5?",
-        "answer": "5"
+        "answer": "5",
+        "options": [ "2", "5" ]
       },
       {
         "question": "Which is less: 1 or 4?",
-        "answer": "1"
+        "answer": "1",
+        "options": [ "1", "4" ]
       },
       {
         "question": "Which group has more: 3 blocks or 1 block?",
-        "answer": "3 blocks"
+        "answer": "3 blocks",
+        "options": [ "3 blocks", "1 block" ]
       },
       {
         "question": "Which group has less: 2 toys or 5 toys?",
-        "answer": "2 toys"
+        "answer": "2 toys",
+        "options": [ "2 toys", "5 toys" ]
       },
       {
         "question": "Which is more: 6 or 3?",
-        "answer": "6"
+        "answer": "6",
+        "options": [ "6", "3" ]
+      },
+      {
+        "question": "Which is less: 4 or 7?",
+        "answer": "4",
+        "options": [ "4", "7" ]
+      },
+      {
+        "question": "Which is more: 8 or 2?",
+        "answer": "8",
+        "options": [ "8", "2" ]
+      },
+      {
+        "question": "Which is less: 5 or 9?",
+        "answer": "5",
+        "options": [ "5", "9" ]
+      },
+      {
+        "question": "Which group has more: 4 apples or 2 apples?",
+        "answer": "4 apples",
+        "options": [ "4 apples", "2 apples" ]
+      },
+      {
+        "question": "Which group has less: 1 pencil or 6 pencils?",
+        "answer": "1 pencil",
+        "options": [ "1 pencil", "6 pencils" ]
       }
     ],
     "KG": [
       {
         "question": "Which is greater: 7 or 4?",
-        "answer": "7"
+        "answer": "7",
+        "options": [ "7", "4" ]
       },
       {
         "question": "Which is less: 3 or 9?",
-        "answer": "3"
+        "answer": "3",
+        "options": [ "3", "9" ]
       },
       {
         "question": "Which is greater: 12 or 8?",
-        "answer": "12"
+        "answer": "12",
+        "options": [ "12", "8" ]
       },
       {
         "question": "Which is less: 15 or 18?",
-        "answer": "15"
+        "answer": "15",
+        "options": [ "15", "18" ]
       },
       {
         "question": "Which is greater: 10 or 6?",
-        "answer": "10"
+        "answer": "10",
+        "options": [ "10", "6" ]
+      },
+      {
+        "question": "Which is less: 5 or 11?",
+        "answer": "5",
+        "options": [ "5", "11" ]
+      },
+      {
+        "question": "Which is greater: 16 or 13?",
+        "answer": "16",
+        "options": [ "16", "13" ]
+      },
+      {
+        "question": "Which is less: 9 or 17?",
+        "answer": "9",
+        "options": [ "9", "17" ]
+      },
+      {
+        "question": "Which is greater: 20 or 14?",
+        "answer": "20",
+        "options": [ "20", "14" ]
+      },
+      {
+        "question": "Which is less: 8 or 12?",
+        "answer": "8",
+        "options": [ "8", "12" ]
       }
     ],
     "1": [
       {
         "question": "Which is greater: 34 or 43?",
-        "answer": "43"
+        "answer": "43",
+        "options": [ "34", "43" ]
       },
       {
         "question": "Which is less: 27 or 72?",
-        "answer": "27"
+        "answer": "27",
+        "options": [ "27", "72" ]
       },
       {
         "question": "Which is greater: 68 or 59?",
-        "answer": "68"
+        "answer": "68",
+        "options": [ "68", "59" ]
       },
       {
         "question": "Which is less: 91 or 109?",
-        "answer": "91"
+        "answer": "91",
+        "options": [ "91", "109" ]
       },
       {
-        "question": "Which is greater: 100 or 99?",
-        "answer": "100"
+        "question": "Which is greater: 51 or 45?",
+        "answer": "51",
+        "options": [ "51", "45" ]
+      },
+      {
+        "question": "Which is less: 80 or 77?",
+        "answer": "77",
+        "options": [ "80", "77" ]
+      },
+      {
+        "question": "Which is greater: 126 or 119?",
+        "answer": "126",
+        "options": [ "126", "119" ]
+      },
+      {
+        "question": "Which is less: 88 or 92?",
+        "answer": "88",
+        "options": [ "88", "92" ]
+      },
+      {
+        "question": "Which is greater: 143 or 134?",
+        "answer": "143",
+        "options": [ "143", "134" ]
+      },
+      {
+        "question": "Which is less: 105 or 150?",
+        "answer": "105",
+        "options": [ "105", "150" ]
       }
     ]
   },
