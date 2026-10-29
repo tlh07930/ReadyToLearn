@@ -188,12 +188,12 @@
         "answer": "N"
       },
       {
-        "question": "Which letter is the first letter of cat?",
-        "answer": "C"
+        "question": "Which letter is the last letter of cat?",
+        "answer": "T"
       },
       {
-        "question": "Which letter comes after O?",
-        "answer": "P"
+        "question": "Which letter comes after X?",
+        "answer": "Y"
       },
       {
         "question": "Which letter comes before G?",
@@ -242,8 +242,8 @@
         "answer": "Z"
       },
       {
-        "question": "Which letter starts the word volcano?",
-        "answer": "V"
+        "question": "Which is the third letter in the word volcano?",
+        "answer": "L"
       },
       {
         "question": "Which letter is between T and V?",
@@ -518,12 +518,12 @@
         "answer": "2"
       },
       {
-        "question": "What number comes before 3?",
-        "answer": "2"
+        "question": "What number comes before 9?",
+        "answer": "8"
       },
       {
-        "question": "What number comes after 4?",
-        "answer": "5"
+        "question": "What number comes after 5?",
+        "answer": "6"
       },
       {
         "question": "What number comes before 6?",
@@ -538,8 +538,8 @@
         "answer": "4"
       },
       {
-        "question": "What number comes after 6?",
-        "answer": "7"
+        "question": "What number comes after 2?",
+        "answer": "3"
       },
       {
         "question": "What number comes before 8?",
@@ -572,16 +572,16 @@
         "answer": "19"
       },
       {
-        "question": "What number comes before 20?",
-        "answer": "19"
+        "question": "What number comes before 21?",
+        "answer": "20"
       },
       {
         "question": "What number comes after 10?",
         "answer": "11"
       },
       {
-        "question": "What number comes before 12?",
-        "answer": "11"
+        "question": "What number comes before 11?",
+        "answer": "10"
       },
       {
         "question": "What number comes after 14?",
@@ -592,8 +592,8 @@
         "answer": "17"
       },
       {
-        "question": "What number comes after 16?",
-        "answer": "17"
+        "question": "What number comes after 15?",
+        "answer": "16"
       }
     ],
     "1": [
