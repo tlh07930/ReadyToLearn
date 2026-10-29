@@ -4,5 +4,6 @@ namespace Ready2Learn.Models
     {
         public string Question { get; set; } = string.Empty;
         public string Answer { get; set; } = string.Empty;
+        public List<string> Options { get; set; } = new();
     }
 }

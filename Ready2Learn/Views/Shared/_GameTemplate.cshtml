@@ -25,51 +25,74 @@
         ? sid
         : -1;
 
-    // If view didn't supply question/answer/choices, ask the content service for a random QA
     if (string.IsNullOrEmpty(question) || string.IsNullOrEmpty(answer) || choices.Count == 0)
     {
-        var qa = GameContentService.GetRandomQuestion(
-            gameName,
-            grade);
+        var qa = GameContentService.GetRandomQuestion(gameName, grade);
 
         if (qa != null)
         {
             question = qa.Question;
             answer = qa.Answer;
 
-            // Create choices from the same game's answers
-            var pool = GameContentService
-                .GetQuestions(gameName, grade)
-                .Select(g => g.Answer)
-                .Where(a => !string.IsNullOrEmpty(a))
-                .Distinct(StringComparer.OrdinalIgnoreCase)
-                .ToList();
-
-            // Ensure we include the correct answer then add random distinct distractors
-            choices = new List<string> { answer };
-
-            var rnd = Random.Shared;
-            while (choices.Count < 4 &&
-                   choices.Count < pool.Count)
+            // If the question explicitly defines its own answer list,
+            // use only those options and do not generate any extra ones.
+            if (qa.Options != null && qa.Options.Count > 0)
             {
-                var candidate = pool[rnd.Next(pool.Count)];
+                choices = qa.Options
+                    .Where(o => !string.IsNullOrWhiteSpace(o))
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToList();
 
-                if (!choices.Contains(
-                        candidate,
-                        StringComparer.OrdinalIgnoreCase))
+                if (!choices.Any(c => string.Equals(c, answer, StringComparison.OrdinalIgnoreCase)))
                 {
-                    choices.Add(candidate);
+                    choices.Add(answer);
                 }
-            }
 
-            // Final shuffle
-            choices = choices
-                .OrderBy(_ => Guid.NewGuid())
-                .ToList();
+                choices = choices
+                    .OrderBy(_ => Guid.NewGuid())
+                    .ToList();
+            }
+            else
+            {
+                // IMPORTANT: do not include any custom-option questions in the default pool.
+                var pool = GameContentService
+                    .GetQuestions(gameName, grade)
+                    .Where(q => q.Options == null || q.Options.Count == 0)
+                    .Select(q => q.Answer)
+                    .Where(a => !string.IsNullOrWhiteSpace(a))
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToList();
+
+                var desiredCount = Math.Min(4, pool.Count);
+
+                choices = new List<string> { answer };
+
+                var distractors = pool
+                    .Where(a => !string.Equals(a, answer, StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(_ => Guid.NewGuid())
+                    .ToList();
+
+                foreach (var distractor in distractors)
+                {
+                    if (choices.Count >= desiredCount)
+                    {
+                        break;
+                    }
+
+                    if (!choices.Contains(distractor, StringComparer.OrdinalIgnoreCase))
+                    {
+                        choices.Add(distractor);
+                    }
+                }
+
+                choices = choices
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .OrderBy(_ => Guid.NewGuid())
+                    .ToList();
+            }
         }
         else
         {
-            // Fallback minimal UI
             question = "No question available";
             answer = string.Empty;
             choices = new List<string>();
@@ -81,15 +104,25 @@
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-12 text-center">
             <div class="d-flex justify-content-center align-items-center" style="gap:0.75rem;">
-                <div id="questionText" data-tts="@question" data-tts-trigger="click" style="text-align: center; font-size: 30px; font-weight: bold;">@(question)</div>
-                <button type="button" id="readQuestionBtn" class="btn btn-outline-secondary btn-sm read-tts-btn" data-tts="@question" data-tts-trigger="click" aria-label="Read question">
+                <div id="questionText"
+                     data-tts="@question"
+                     data-tts-trigger="click"
+                     style="text-align: center; font-size: 30px; font-weight: bold;">
+                    @(question)
+                </div>
+
+                <button type="button"
+                        id="readQuestionBtn"
+                        class="btn btn-outline-secondary btn-sm read-tts-btn"
+                        data-tts="@question"
+                        data-tts-trigger="click"
+                        aria-label="Read question">
                     <i class="bi bi-volume-up-fill" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Form used to submit the result -->
     <form id="resultForm" asp-controller="Games" asp-action="SubmitResult" method="post">
         @Html.AntiForgeryToken()
         <input type="hidden" name="student" value="@studentId" />
@@ -99,33 +132,21 @@
         <input type="hidden" id="answerInput" name="answer" value="" />
     </form>
 
-    <div class="row">
+    <div class="d-flex flex-wrap justify-content-center gap-3">
         @foreach (string choice in choices)
         {
-            if (string.Equals(choice, answer, StringComparison.OrdinalIgnoreCase))
-            {
-                <div class="col-3 text-center">
-                    <button type="button"
-                            class="btn btn-light square choice-button"
-                            onclick='submitResult(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(choice)), this)'
-                            data-tts="@choice"
-                            data-tts-trigger="hover focus">
-                        @choice
-                    </button>
-                </div>
-            }
-            else
-            {
-                <div class="col-3 text-center">
-                    <button type="button"
-                            class="btn btn-light square choice-button"
-                            onclick='submitResult(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(choice)), this)'
-                            data-tts="@choice"
-                            data-tts-trigger="hover focus">
-                        @choice
-                    </button>
-                </div>
-            }
+            bool isCorrect = string.Equals(choice, answer, StringComparison.OrdinalIgnoreCase);
+
+            <div class="text-center">
+                <button type="button"
+                        class="btn btn-light square choice-button"
+                        style="min-width: 120px;"
+                        onclick='@(isCorrect ? "submitResult" : "addGuess")(@Html.Raw(System.Text.Json.JsonSerializer.Serialize(choice)), this)'
+                        data-tts="@choice"
+                        data-tts-trigger="hover focus">
+                    @choice
+                </button>
+            </div>
         }
     </div>
 </div>
@@ -140,39 +161,54 @@
         justify-content: center;
         border-radius: 8px;
     }
+
     #questionText {
         max-width: 70%;
         word-wrap: break-word;
     }
+
+    .choice-button {
+        min-width: 120px;
+        padding: 0.75rem 1rem;
+        font-size: 1.1rem;
+    }
+
     @@media (max-width: 576px) {
-        #questionText { font-size: 20px; max-width: 60%; }
-        .read-tts-btn { width: 36px; height: 36px; }
+        #questionText {
+            max-width: 100%;
+            font-size: 24px;
+        }
+
+        .choice-button {
+            min-width: 100px;
+            font-size: 1rem;
+        }
     }
 </style>
 
 <script>
-    const guesses = [];
+    function submitResult(choice, button) {
+        const form = document.getElementById('resultForm');
+        const answerInput = document.getElementById('answerInput');
+        const guessesString = document.getElementById('guessesString');
 
-    function addGuess(choice, btn) {
-        guesses.push(choice);
-        btn.classList.remove('btn-light');
-        btn.classList.add('btn-danger');
-        btn.disabled = true;
+        answerInput.value = choice;
+        guessesString.value = '';
+        form.submit();
     }
 
-    function submitResult(answer, btn) {
-        if (btn.disabled) return;
-        document.querySelectorAll('.choice-button').forEach(b => {
-            b.disabled = true;
-        });
+    function addGuess(choice, button) {
+        const form = document.getElementById('resultForm');
+        const guessesInput = document.getElementById('guessesString');
+        const answerInput = document.getElementById('answerInput');
 
-        btn.classList.remove('btn-light', 'btn-danger');
-        btn.classList.add('btn-success');
+        const current = (guessesInput.value || '').split(',').filter(Boolean);
+        if (!current.includes(choice)) {
+            current.push(choice);
+        }
 
-        document.getElementById('guessesString').value = guesses.join(',');
-        document.getElementById('answerInput').value = answer;
-        setTimeout(() => {
-            document.getElementById('resultForm').submit();
-        }, 600);
+        guessesInput.value = current.join(',');
+        answerInput.value = choice;
+        form.submit();
     }
 </script>

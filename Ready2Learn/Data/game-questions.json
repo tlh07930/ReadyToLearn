@@ -774,10 +774,6 @@
         "answer": "Tuesday"
       },
       {
-        "question": "What day comes after Tuesday?",
-        "answer": "Wednesday"
-      },
-      {
         "question": "What day comes before Friday?",
         "answer": "Thursday"
       },
@@ -786,40 +782,8 @@
         "answer": "Sunday"
       },
       {
-        "question": "What day comes before Monday?",
-        "answer": "Sunday"
-      }
-    ],
-    "KG": [
-      {
-        "question": "What day comes after Wednesday?",
-        "answer": "Thursday"
-      },
-      {
-        "question": "What day comes before Tuesday?",
-        "answer": "Monday"
-      },
-      {
-        "question": "What day comes after Friday?",
-        "answer": "Saturday"
-      },
-      {
         "question": "What day comes before Sunday?",
         "answer": "Saturday"
-      },
-      {
-        "question": "What day comes after Sunday?",
-        "answer": "Monday"
-      }
-    ],
-    "1": [
-      {
-        "question": "What day comes two days after Monday?",
-        "answer": "Wednesday"
-      },
-      {
-        "question": "What day comes two days before Friday?",
-        "answer": "Wednesday"
       },
       {
         "question": "What day comes after Thursday?",
@@ -830,8 +794,109 @@
         "answer": "Tuesday"
       },
       {
-        "question": "What day comes after Saturday?",
+        "question": "What day is the first day of the week?",
         "answer": "Sunday"
+      },
+      {
+        "question": "What day is the last day of the week?",
+        "answer": "Saturday"
+      },
+      {
+        "question": "Is Saturday a weekday or a weekend day?",
+        "answer": "weekend",
+        "options": [ "weekday", "weekend" ]
+      },
+      {
+        "question": "Is Monday a weekday or a weekend day?",
+        "answer": "weekday",
+        "options": [ "weekday", "weekend" ]
+      }
+    ],
+    "KG": [
+      {
+        "question": "What day comes after Tuesday?",
+        "answer": "Wednesday"
+      },
+      {
+        "question": "What day comes before Thursday?",
+        "answer": "Wednesday"
+      },
+      {
+        "question": "What day comes after Sunday?",
+        "answer": "Monday"
+      },
+      {
+        "question": "What day comes before Tuesday?",
+        "answer": "Monday"
+      },
+      {
+        "question": "What day comes before Saturday?",
+        "answer": "Friday"
+      },
+      {
+        "question": "What day comes after Friday?",
+        "answer": "Saturday"
+      },
+      {
+        "question": "Which day is between Thursday and Saturday?",
+        "answer": "Friday"
+      },
+      {
+        "question": "What day is the first day of the week?",
+        "answer": "Sunday"
+      },
+      {
+        "question": "Which day comes two days after Monday?",
+        "answer": "Wednesday"
+      },
+      {
+        "question": "Is Sunday before Monday?",
+        "answer": "yes",
+        "options": [ "yes", "no" ]
+      }
+    ],
+    "1": [
+      {
+        "question": "What day comes two days after Monday?",
+        "answer": "Wednesday"
+      },
+      {
+        "question": "What day comes three days before Saturday?",
+        "answer": "Wednesday"
+      },
+      {
+        "question": "Which day is between Thursday and Saturday?",
+        "answer": "Friday"
+      },
+      {
+        "question": "What day comes before Friday?",
+        "answer": "Thursday"
+      },
+      {
+        "question": "What day comes after Sunday?",
+        "answer": "Monday"
+      },
+      {
+        "question": "What day is the last day of the week?",
+        "answer": "Saturday"
+      },
+      {
+        "question": "Is Friday a weekday or a weekend day?",
+        "answer": "weekday",
+        "options": [ "weekday", "weekend" ]
+      },
+      {
+        "question": "What day comes two days before Sunday?",
+        "answer": "Friday"
+      },
+      {
+        "question": "What day comes after Wednesday?",
+        "answer": "Thursday"
+      },
+      {
+        "question": "Is Sunday the day before Monday?",
+        "answer": "yes",
+        "options": [ "yes", "no" ]
       }
     ]
   },
