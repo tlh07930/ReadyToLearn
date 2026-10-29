@@ -2175,68 +2175,158 @@
   "Maps": {
     "PK": [
       {
-        "question": "What can a map show us?",
-        "answer": "Places"
+        "question": "What is a map used for?",
+        "answer": "To show places",
+        "options": [ "To show places", "To tell a story" ]
       },
       {
-        "question": "What place shows where you live?",
-        "answer": "Home"
+        "question": "Where do you live?",
+        "answer": "Home",
+        "options": [ "Home", "School" ]
       },
       {
-        "question": "What place can you visit to borrow books?",
-        "answer": "Library"
+        "question": "What do we use to go from one place to another?",
+        "answer": "Road",
+        "options": [ "Road", "Cloud" ]
       },
       {
-        "question": "What place can you visit to learn?",
-        "answer": "School"
+        "question": "What is a big place with swings and a slide called?",
+        "answer": "Park",
+        "options": [ "Park", "River" ]
       },
       {
-        "question": "What do we use to find our way?",
-        "answer": "Map"
+        "question": "What is a place where you go to learn called?",
+        "answer": "School",
+        "options": [ "School", "Lake" ]
+      },
+      {
+        "question": "What is a big body of water called?",
+        "answer": "Lake",
+        "options": [ "Lake", "Road" ]
+      },
+      {
+        "question": "What do we drive on?",
+        "answer": "Road",
+        "options": [ "Road", "Sidewalk" ]
+      },
+      {
+        "question": "Where do we go to play?",
+        "answer": "Park",
+        "options": [ "Park", "Grocery store" ]
+      },
+      {
+        "question": "What helps us find where places are?",
+        "answer": "Map",
+        "options": [ "Map", "Chair" ]
+      },
+      {
+        "question": "What do you walk on?",
+        "answer": "Sidewalk",
+        "options": [ "Sidewalk", "Road" ]
       }
     ],
     "KG": [
       {
-        "question": "What does a map show?",
-        "answer": "Places"
+        "question": "What is a map used for?",
+        "answer": "To find places",
+        "options": [ "To find places", "To cook food" ]
       },
       {
-        "question": "What does a map key explain?",
-        "answer": "Symbols"
+        "question": "What is a road?",
+        "answer": "A path for cars and people",
+        "options": [ "A path for cars and people", "A place to sleep" ]
       },
       {
-        "question": "Which direction is opposite north?",
-        "answer": "South"
+        "question": "What is a river?",
+        "answer": "A stream of water",
+        "options": [ "A stream of water", "A big hill" ]
       },
       {
-        "question": "Which direction is opposite east?",
-        "answer": "West"
+        "question": "What is a mountain?",
+        "answer": "A big high landform",
+        "options": [ "A big high landform", "A small puddle" ]
       },
       {
-        "question": "What symbol might show a school on a map?",
-        "answer": "A school symbol"
+        "question": "Where do you go to buy food?",
+        "answer": "Grocery store",
+        "options": [ "Grocery store", "Park" ]
+      },
+      {
+        "question": "Where do you go to learn?",
+        "answer": "School",
+        "options": [ "School", "Movie theater" ]
+      },
+      {
+        "question": "What explains the symbols on a map?",
+        "answer": "Map key",
+        "options": [ "Map key", "Compass" ]
+      },
+      {
+        "question": "What is a symbol on a map?",
+        "answer": "A picture that stands for something",
+        "options": [ "A picture that stands for something", "A place to sit" ]
+      },
+      {
+        "question": "Where do you go to play?",
+        "answer": "Park",
+        "options": [ "Park", "Grocery store" ]
+      },
+      {
+        "question": "Which would you find on a map: grocery store or chair?",
+        "answer": "Grocery store",
+        "options": [ "Grocery store", "Chair" ]
       }
     ],
     "1": [
       {
-        "question": "What does a map legend explain?",
-        "answer": "Map symbols"
+        "question": "What is a map key used for?",
+        "answer": "To explain symbols",
+        "options": [ "To explain symbols", "To tell the weather" ]
       },
       {
-        "question": "What tool can show direction on a map?",
-        "answer": "Compass rose"
+        "question": "What is a compass used for?",
+        "answer": "To show direction",
+        "options": [ "To show direction", "To measure height" ]
       },
       {
-        "question": "What does a map scale help us understand?",
-        "answer": "Distance"
+        "question": "Which direction is usually at the top of a map?",
+        "answer": "North",
+        "options": [ "North", "South" ]
       },
       {
-        "question": "Which direction is between north and east?",
-        "answer": "Northeast"
+        "question": "Which direction is usually to the right of north on a map?",
+        "answer": "East",
+        "options": [ "East", "West" ]
       },
       {
-        "question": "What is a map of a small area such as a neighborhood called?",
-        "answer": "Local map"
+        "question": "Which direction is usually to the left of north on a map?",
+        "answer": "West",
+        "options": [ "West", "East" ]
+      },
+      {
+        "question": "What is a road?",
+        "answer": "A path for cars and people",
+        "options": [ "A path for cars and people", "A place to swim" ]
+      },
+      {
+        "question": "What is a river?",
+        "answer": "A long stream of water",
+        "options": [ "A long stream of water", "A place with grass" ]
+      },
+      {
+        "question": "What is a lake?",
+        "answer": "Water surrounded by land",
+        "options": [ "Water surrounded by land", "A tall mountain" ]
+      },
+      {
+        "question": "What is a street map used for?",
+        "answer": "To find roads and places",
+        "options": [ "To find roads and places", "To tell the time" ]
+      },
+      {
+        "question": "What is a mountain?",
+        "answer": "A high landform",
+        "options": [ "A high landform", "A small stream" ]
       }
     ]
   }
