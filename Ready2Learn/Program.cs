@@ -19,25 +19,23 @@ namespace Ready2Learn
                 options.UseSqlServer(connectionString, sqlOptions =>
                 {
                     sqlOptions.EnableRetryOnFailure(
-                        maxRetryCount: 5,
-                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        maxRetryCount: 2,
+                        maxRetryDelay: TimeSpan.FromSeconds(2),
                         errorNumbersToAdd: null);
 
-                    sqlOptions.CommandTimeout(30);
+                    sqlOptions.CommandTimeout(10);
                 });
             });
 
             // Services Configuration
-            //builder.Services.AddScoped<IDisplayStateService, DisplayStateService>();
             builder.Services.AddScoped<IGamesService, GamesService>();
             builder.Services.AddScoped<IResultsService, ResultsService>();
             builder.Services.AddScoped<IStudentsService, StudentsService>();
-            builder.Services.AddScoped<ITeachersService, TeachersService>(); // LOOK INTO SCOPED VERSUS OTHER OPTIONS (SINGLETON OR TRANSIENT)
+            builder.Services.AddScoped<ITeachersService, TeachersService>();
 
             // Register the game content service (singleton since content is static)
             builder.Services.AddSingleton<IGameContentService, GameContentService>();
 
-            //builder.Services.AddHttpContextAccessor();
             builder.Services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;
@@ -53,7 +51,6 @@ namespace Ready2Learn
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -65,8 +62,7 @@ namespace Ready2Learn
             app.UseAuthorization();
 
             app.MapControllerRoute(name: "default", pattern: "{controller=LogIn}/{action=LogIn}/{id?}");
-            //app.MapControllerRoute();
-            
+
             app.Run();
         }
     }

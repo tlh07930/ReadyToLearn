@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using NuGet.DependencyResolver;
+using Microsoft.Data.SqlClient;
 using Ready2Learn.Data.Services;
 using Ready2Learn.Models;
 using Ready2Learn.Security;
-using System.Threading.Tasks;
 
 namespace Ready2Learn.Controllers
 {
@@ -84,14 +83,77 @@ namespace Ready2Learn.Controllers
                 return View(login);
             }
 
-            Teacher loggedInTeacher = await _teacherService.ValidateLoginAsync(login.Username, login.Password);
-            if (loggedInTeacher == null)
+            try
             {
+                Teacher loggedInTeacher = await _teacherService.ValidateLoginAsync(login.Username, login.Password);
+                if (loggedInTeacher == null)
+                {
+                    ModelState.AddModelError("Password", "Incorrect username or password.");
+                    return View(login);
+                }
+
+                Response.Cookies.Append("TeacherID", loggedInTeacher.ID.ToString());
+                return RedirectToAction("Home");
+            }
+            catch (SqlException ex) when (IsTransient(ex))
+            {
+                // Immediate retry before giving up
+                try
+                {
+                    Teacher retryTeacher = await _teacherService.ValidateLoginAsync(login.Username, login.Password);
+                    if (retryTeacher != null)
+                    {
+                        Response.Cookies.Append("TeacherID", retryTeacher.ID.ToString());
+                        return RedirectToAction("Home");
+                    }
+                }
+                catch (SqlException)
+                {
+                    // Do not hold the browser up — retry in background
+                    _ = RetryTeacherLoginInBackground(login.Username, login.Password);
+
+                    TempData["Message"] = "The database is temporarily unavailable. We are retrying in the background.";
+                    ModelState.AddModelError("Password", "The database is temporarily unavailable. Please try again.");
+                    return View(login);
+                }
+
                 ModelState.AddModelError("Password", "Incorrect username or password.");
                 return View(login);
             }
-            Response.Cookies.Append("TeacherID", loggedInTeacher.ID.ToString());
-            return RedirectToAction("Home");
+        }
+
+        private async Task RetryTeacherLoginInBackground(string username, string password)
+        {
+            var delays = new[] { 2, 5, 10, 15 };
+
+            foreach (var delay in delays)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(delay));
+
+                try
+                {
+                    var teacher = await _teacherService.ValidateLoginAsync(username, password);
+                    if (teacher != null)
+                    {
+                        // Optional: log success or update session if you want
+                        return;
+                    }
+                }
+                catch (SqlException ex) when (IsTransient(ex))
+                {
+                    // keep retrying
+                }
+            }
+        }
+
+        private static bool IsTransient(SqlException ex)
+        {
+            return ex.Number == 40615 ||
+                   ex.Number == 40197 ||
+                   ex.Number == 49918 ||
+                   ex.Number == 18456 ||
+                   ex.Number == 1205 ||
+                   ex.Number == 121;
         }
 
         public async Task<IActionResult> LogOut()
