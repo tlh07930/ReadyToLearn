@@ -1484,67 +1484,157 @@
     "PK": [
       {
         "question": "Which is bigger: an elephant or a mouse?",
-        "answer": "Elephant"
+        "answer": "Elephant",
+        "options": [ "Elephant", "Mouse" ]
       },
       {
-        "question": "Which is smaller: a cat or a horse?",
-        "answer": "Cat"
+        "question": "Which is smaller: a toy car or a real car?",
+        "answer": "Toy car",
+        "options": [ "Toy car", "Real car" ]
       },
       {
         "question": "Which is bigger: a house or a toy block?",
-        "answer": "House"
+        "answer": "House",
+        "options": [ "House", "Toy block" ]
       },
       {
-        "question": "Which is smaller: an ant or a dog?",
-        "answer": "Ant"
+        "question": "Which is smaller: a puppy or a horse?",
+        "answer": "Puppy",
+        "options": [ "Puppy", "Horse" ]
       },
       {
-        "question": "Which is bigger: a bus or a bicycle?",
-        "answer": "Bus"
+        "question": "Which is bigger: a watermelon or a grape?",
+        "answer": "Watermelon",
+        "options": [ "Watermelon", "Grape" ]
+      },
+      {
+        "question": "Which is smaller: a shoe or a boat?",
+        "answer": "Shoe",
+        "options": [ "Shoe", "Boat" ]
+      },
+      {
+        "question": "Which is bigger: a book or a crayon?",
+        "answer": "Book",
+        "options": [ "Book", "Crayon" ]
+      },
+      {
+        "question": "Which is smaller: a worm or a whale?",
+        "answer": "Worm",
+        "options": [ "Worm", "Whale" ]
+      },
+      {
+        "question": "Which is bigger: a tree or a flower?",
+        "answer": "Tree",
+        "options": [ "Tree", "Flower" ]
+      },
+      {
+        "question": "Which is smaller: a cat or a tiger?",
+        "answer": "Cat",
+        "options": [ "Cat", "Tiger" ]
       }
     ],
     "KG": [
       {
-        "question": "Which object is longer: a pencil or a crayon?",
-        "answer": "Pencil"
+        "question": "Which is bigger: a bus or a bicycle?",
+        "answer": "Bus",
+        "options": [ "Bus", "Bicycle" ]
       },
       {
-        "question": "Which object is heavier: a rock or a feather?",
-        "answer": "Rock"
+        "question": "Which is smaller: a spoon or a shovel?",
+        "answer": "Spoon",
+        "options": [ "Spoon", "Shovel" ]
       },
       {
-        "question": "Which object is smaller: a marble or a basketball?",
-        "answer": "Marble"
+        "question": "Which is bigger: a balloon or a mountain?",
+        "answer": "Mountain",
+        "options": [ "Balloon", "Mountain" ]
       },
       {
-        "question": "Which animal is taller: a giraffe or a rabbit?",
-        "answer": "Giraffe"
+        "question": "Which is smaller: a ladybug or a lion?",
+        "answer": "Ladybug",
+        "options": [ "Ladybug", "Lion" ]
       },
       {
-        "question": "Which object takes up more space: a box or a button?",
-        "answer": "Box"
+        "question": "Which is bigger: a bucket or a cup?",
+        "answer": "Bucket",
+        "options": [ "Bucket", "Cup" ]
+      },
+      {
+        "question": "Which is smaller: a seed or a tree?",
+        "answer": "Seed",
+        "options": [ "Seed", "Tree" ]
+      },
+      {
+        "question": "Which is bigger: a school or a classroom?",
+        "answer": "School",
+        "options": [ "School", "Classroom" ]
+      },
+      {
+        "question": "Which is smaller: a pencil or a desk?",
+        "answer": "Pencil",
+        "options": [ "Pencil", "Desk" ]
+      },
+      {
+        "question": "Which is bigger: a cloud or a bird?",
+        "answer": "Cloud",
+        "options": [ "Cloud", "Bird" ]
+      },
+      {
+        "question": "Which is smaller: a bug or a dog?",
+        "answer": "Bug",
+        "options": [ "Bug", "Dog" ]
       }
     ],
     "1": [
       {
-        "question": "Which property tells how much space an object takes up?",
-        "answer": "Size"
+        "question": "Which is bigger: 12 or 7?",
+        "answer": "12",
+        "options": [ "12", "7" ]
       },
       {
-        "question": "Which object is more flexible: a rubber band or a wooden block?",
-        "answer": "Rubber band"
+        "question": "Which is smaller: 18 or 9?",
+        "answer": "9",
+        "options": [ "18", "9" ]
       },
       {
-        "question": "Which object is harder: a rock or a sponge?",
-        "answer": "Rock"
+        "question": "Which is bigger: 25 or 20?",
+        "answer": "25",
+        "options": [ "25", "20" ]
       },
       {
-        "question": "Which object is more absorbent: a towel or a glass cup?",
-        "answer": "Towel"
+        "question": "Which is smaller: 34 or 29?",
+        "answer": "29",
+        "options": [ "34", "29" ]
       },
       {
-        "question": "Which property describes how heavy an object is?",
-        "answer": "Mass"
+        "question": "Which is bigger: 50 or 40?",
+        "answer": "50",
+        "options": [ "50", "40" ]
+      },
+      {
+        "question": "Which is smaller: 15 or 26?",
+        "answer": "15",
+        "options": [ "15", "26" ]
+      },
+      {
+        "question": "Which is bigger: 63 or 35?",
+        "answer": "63",
+        "options": [ "63", "35" ]
+      },
+      {
+        "question": "Which is smaller: 48 or 61?",
+        "answer": "48",
+        "options": [ "48", "61" ]
+      },
+      {
+        "question": "Which is bigger: 82 or 78?",
+        "answer": "82",
+        "options": [ "82", "78" ]
+      },
+      {
+        "question": "Which is smaller: 91 or 98?",
+        "answer": "91",
+        "options": [ "91", "98" ]
       }
     ]
   },
