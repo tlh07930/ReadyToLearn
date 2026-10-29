@@ -129,9 +129,9 @@ namespace Ready2Learn.Controllers
             return await GetGameViewAsync("Before and After");
         }
 
-        public async Task<IActionResult> CountBy10s()
+        public async Task<IActionResult> CountBy5sand10s()
         {
-            return await GetGameViewAsync("Count By 10s");
+            return await GetGameViewAsync("Count By 5s and 10s");
         }
 
         public async Task<IActionResult> DaysoftheWeek()

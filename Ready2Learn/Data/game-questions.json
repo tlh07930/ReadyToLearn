@@ -639,71 +639,131 @@
       }
     ]
   },
-  "Count By 10s": {
+  "Count By 5s and 10s": {
     "PK": [
       {
-        "question": "What comes after 10 when counting by tens?",
+        "question": "What comes after 10 when counting by 10s?",
         "answer": "20"
       },
       {
-        "question": "What comes after 20 when counting by tens?",
+        "question": "What comes after 20 when counting by 10s?",
         "answer": "30"
       },
       {
-        "question": "What comes after 30 when counting by tens?",
+        "question": "What comes after 30 when counting by 10s?",
         "answer": "40"
       },
       {
-        "question": "What comes after 40 when counting by tens?",
+        "question": "What comes after 40 when counting by 10s?",
         "answer": "50"
       },
       {
-        "question": "What comes after 50 when counting by tens?",
+        "question": "What comes after 50 when counting by 10s?",
         "answer": "60"
+      },
+      {
+        "question": "What comes after 60 when counting by 10s?",
+        "answer": "70"
+      },
+      {
+        "question": "What comes after 70 when counting by 10s?",
+        "answer": "80"
+      },
+      {
+        "question": "What comes after 80 when counting by 10s?",
+        "answer": "90"
+      },
+      {
+        "question": "What comes after 90 when counting by 10s?",
+        "answer": "100"
+      },
+      {
+        "question": "What comes after 100 when counting by 10s?",
+        "answer": "110"
       }
     ],
     "KG": [
       {
-        "question": "What comes after 20 when counting by tens?",
+        "question": "What comes after 10 when counting by 10s?",
+        "answer": "20"
+      },
+      {
+        "question": "What comes after 20 when counting by 10s?",
         "answer": "30"
       },
       {
-        "question": "What comes after 40 when counting by tens?",
+        "question": "What comes after 5 when counting by 5s?",
+        "answer": "10"
+      },
+      {
+        "question": "What comes after 20 when counting by 5s?",
+        "answer": "25"
+      },
+      {
+        "question": "What comes after 40 when counting by 10s?",
         "answer": "50"
       },
       {
-        "question": "What comes after 60 when counting by tens?",
+        "question": "What comes after 25 when counting by 5s?",
+        "answer": "30"
+      },
+      {
+        "question": "What comes after 60 when counting by 10s?",
         "answer": "70"
       },
       {
-        "question": "What comes after 80 when counting by tens?",
+        "question": "What comes after 35 when counting by 5s?",
+        "answer": "40"
+      },
+      {
+        "question": "What comes after 80 when counting by 10s?",
         "answer": "90"
       },
       {
-        "question": "What comes after 90 when counting by tens?",
-        "answer": "100"
+        "question": "What comes after 50 when counting by 5s?",
+        "answer": "55"
       }
     ],
     "1": [
       {
-        "question": "What comes after 30 when counting by tens?",
-        "answer": "40"
+        "question": "What comes after 10 when counting by 10s?",
+        "answer": "20"
       },
       {
-        "question": "What comes after 50 when counting by tens?",
+        "question": "What comes after 25 when counting by 5s?",
+        "answer": "30"
+      },
+      {
+        "question": "What comes after 40 when counting by 10s?",
+        "answer": "50"
+      },
+      {
+        "question": "What comes after 50 when counting by 5s?",
+        "answer": "55"
+      },
+      {
+        "question": "What comes after 60 when counting by 10s?",
+        "answer": "70"
+      },
+      {
+        "question": "What comes after 55 when counting by 5s?",
         "answer": "60"
       },
       {
-        "question": "What comes after 70 when counting by tens?",
-        "answer": "80"
+        "question": "What comes after 80 when counting by 10s?",
+        "answer": "90"
       },
       {
-        "question": "What comes after 90 when counting by tens?",
-        "answer": "100"
+        "question": "What comes after 30 when counting by 5s?",
+        "answer": "35"
       },
       {
-        "question": "What comes after 110 when counting by tens?",
+        "question": "What comes after 110 when counting by 10s?",
         "answer": "120"
+      },
+      {
+        "question": "What comes after 20 when counting by 5s?",
+        "answer": "25"
       }
     ]
   },
