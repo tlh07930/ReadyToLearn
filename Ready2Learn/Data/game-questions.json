@@ -2033,68 +2033,142 @@
   "Weather": {
     "PK": [
       {
-        "question": "What kind of weather has drops of water falling?",
-        "answer": "Rainy"
+        "question": "What do we wear on our body when it is rainy?",
+        "answer": "Raincoat"
       },
       {
-        "question": "What kind of weather has snow falling?",
-        "answer": "Snowy"
+        "question": "What do we wear to protect us from the sun when it is sunny and hot?",
+        "answer": "Sunscreen"
       },
       {
-        "question": "What kind of weather has moving air?",
-        "answer": "Windy"
+        "question": "What do we use when it is snowing to keep us warm?",
+        "answer": "Winter coat"
       },
       {
-        "question": "What kind of weather has many clouds?",
-        "answer": "Cloudy"
+        "question": "What do we wear on our feet when it is raining?",
+        "answer": "Rainboots"
       },
       {
-        "question": "What kind of weather has bright sunshine?",
-        "answer": "Sunny"
+        "question": "What do we wear to play in the water on a hot summer day?",
+        "answer": "Swimsuit"
+      },
+      {
+        "question": "What do we hold to keep the raindrops from falling on us?",
+        "answer": "Umbrella"
+      },
+      {
+        "question": "What do we wear on a chilly fall day to play in the leaves?",
+        "answer": "Jacket"
+      },
+      {
+        "question": "What do we wear on our head to keep the sun out of our eyes?",
+        "answer": "Hat"
+      },
+      {
+        "question": "What do we do when it is storming outside with thunder and lightning?",
+        "answer": "Play inside",
+        "options": [ "Play inside", "Go for a walk" ]
+      },
+      {
+        "question": "What can you do in the winter when there is snow on the ground?",
+        "answer": "Build a snowman",
+        "options": [ "Build a snowman", "Go swimming" ]
       }
     ],
     "KG": [
       {
-        "question": "What tool can show how hot or cold the air is?",
-        "answer": "Thermometer"
+        "question": "Which kind of weather is best for wearing a raincoat?",
+        "answer": "Rainy"
       },
       {
-        "question": "What should you wear on a rainy day?",
-        "answer": "Raincoat"
+        "question": "Which kind of weather is usually hot and bright?",
+        "answer": "Sunny"
       },
       {
-        "question": "What should you wear when it is cold outside?",
-        "answer": "Coat"
+        "question": "Which kind of weather includes lots of snow?",
+        "answer": "Snowy"
       },
       {
-        "question": "What do dark clouds often signal?",
-        "answer": "Rain"
+        "question": "Which kind of weather has little sunshine?",
+        "answer": "Cloudy"
       },
       {
-        "question": "What can wind move?",
-        "answer": "Leaves"
+        "question": "What should you use when it is raining outside?",
+        "answer": "Umbrella",
+        "options": [ "Umbrella", "Swimsuit" ]
+      },
+      {
+        "question": "What kind of weather is cold enough for ice to form?",
+        "answer": "Snowy"
+      },
+      {
+        "question": "What do you call weather with lots of wind?",
+        "answer": "Windy"
+      },
+      {
+        "question": "Which weather is safest for playing outside in shorts and a T-shirt?",
+        "answer": "Sunny"
+      },
+      {
+        "question": "Who tells us about the weather?",
+        "answer": "Weatherman",
+        "options": [ "Weatherman", "Banker", "Painter", "Doctor" ]
+      },
+      {
+        "question": "Which kind of weather makes puddles and mud?",
+        "answer": "Rainy"
       }
     ],
     "1": [
       {
-        "question": "What does weather describe?",
-        "answer": "Conditions in the air outside"
+        "question": "Which weather condition is most likely to cause thunder and lightning?",
+        "answer": "Stormy",
+        "options": [ "Stormy", "Sunny" ]
       },
       {
-        "question": "What can be used to measure temperature?",
-        "answer": "Thermometer"
+        "question": "Which weather condition is best for wearing boots and a coat?",
+        "answer": "Cold",
+        "options": [ "Cold", "Hot" ]
       },
       {
-        "question": "What pattern can help predict tomorrow's weather?",
-        "answer": "Weather observations"
+        "question": "Which weather condition includes lots of water falling from the sky?",
+        "answer": "Rainy",
+        "options": [ "Rainy", "Dry" ]
       },
       {
-        "question": "What happens to water when it gets very cold?",
-        "answer": "It freezes"
+        "question": "What tool helps us measure temperature?",
+        "answer": "Thermometer",
+        "options": [ "Thermometer", "Ruler" ]
       },
       {
-        "question": "What happens to wet clothing in warm moving air?",
-        "answer": "It dries"
+        "question": "Which weather condition has a lot of water vapor in the air and can lead to storms?",
+        "answer": "Humid",
+        "options": [ "Humid", "Dry" ]
+      },
+      {
+        "question": "What is the name for water that falls as ice during winter?",
+        "answer": "Hail",
+        "options": [ "Hail", "Fog" ]
+      },
+      {
+        "question": "Which weather condition makes the air feel very wet and sticky?",
+        "answer": "Humid",
+        "options": [ "Humid", "Windy" ]
+      },
+      {
+        "question": "Which weather is most likely when the temperature is below freezing?",
+        "answer": "Snow",
+        "options": [ "Snow", "Rain" ]
+      },
+      {
+        "question": "Which tool helps us know what the weather will be like tomorrow?",
+        "answer": "Weather report",
+        "options": [ "Weather report", "Calendar" ]
+      },
+      {
+        "question": "What weather condition is caused by water droplets in the air that make it hard to see far away?",
+        "answer": "Foggy",
+        "options": [ "Foggy", "Sunny" ]
       }
     ]
   },
