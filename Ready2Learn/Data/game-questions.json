@@ -903,68 +903,128 @@
   "Fast Facts": {
     "PK": [
       {
-        "question": "What is 1 plus 1?",
+        "question": "What is 1 + 1?",
         "answer": "2"
       },
       {
-        "question": "What is 2 plus 1?",
+        "question": "What is 2 + 1?",
         "answer": "3"
       },
       {
-        "question": "What is 3 plus 1?",
+        "question": "What is 3 + 1?",
         "answer": "4"
       },
       {
-        "question": "What is 2 plus 3?",
+        "question": "What is 2 + 2?",
+        "answer": "4"
+      },
+      {
+        "question": "What is 1 + 2?",
+        "answer": "3"
+      },
+      {
+        "question": "What is 4 + 1?",
         "answer": "5"
       },
       {
-        "question": "What is 3 plus 3?",
-        "answer": "6"
+        "question": "What is 3 + 2?",
+        "answer": "5"
+      },
+      {
+        "question": "What is 5 - 1?",
+        "answer": "4"
+      },
+      {
+        "question": "What is 4 - 2?",
+        "answer": "2"
+      },
+      {
+        "question": "What is 3 - 1?",
+        "answer": "2"
       }
     ],
     "KG": [
       {
-        "question": "What is 3 plus 2?",
+        "question": "What is 2 + 3?",
         "answer": "5"
       },
       {
-        "question": "What is 4 plus 3?",
-        "answer": "7"
+        "question": "What is 4 + 2?",
+        "answer": "6"
       },
       {
-        "question": "What is 6 minus 2?",
+        "question": "What is 5 + 1?",
+        "answer": "6"
+      },
+      {
+        "question": "What is 3 + 3?",
+        "answer": "6"
+      },
+      {
+        "question": "What is 6 + 2?",
+        "answer": "8"
+      },
+      {
+        "question": "What is 7 - 2?",
+        "answer": "5"
+      },
+      {
+        "question": "What is 9 - 3?",
+        "answer": "6"
+      },
+      {
+        "question": "What is 8 - 4?",
         "answer": "4"
       },
       {
-        "question": "What is 8 minus 3?",
-        "answer": "5"
+        "question": "What is 5 + 3?",
+        "answer": "8"
       },
       {
-        "question": "What is 5 plus 5?",
-        "answer": "10"
+        "question": "What is 10 - 5?",
+        "answer": "5"
       }
     ],
     "1": [
       {
-        "question": "What is 7 plus 6?",
+        "question": "What is 8 + 4?",
+        "answer": "12"
+      },
+      {
+        "question": "What is 7 + 6?",
         "answer": "13"
       },
       {
-        "question": "What is 9 plus 8?",
-        "answer": "17"
+        "question": "What is 9 + 5?",
+        "answer": "14"
       },
       {
-        "question": "What is 14 minus 6?",
+        "question": "What is 11 + 7?",
+        "answer": "18"
+      },
+      {
+        "question": "What is 12 + 8?",
+        "answer": "20"
+      },
+      {
+        "question": "What is 15 - 7?",
         "answer": "8"
       },
       {
-        "question": "What is 18 minus 9?",
+        "question": "What is 18 - 9?",
         "answer": "9"
       },
       {
-        "question": "What is 10 plus 10?",
+        "question": "What is 20 - 6?",
+        "answer": "14"
+      },
+      {
+        "question": "What is 14 + 6?",
         "answer": "20"
+      },
+      {
+        "question": "What is 16 - 9?",
+        "answer": "7"
       }
     ]
   },
