@@ -45,7 +45,17 @@
             </div>
 
             <div class="col classlink-input-container" style="width: 35%">
-                <label asp-for="ClassLink" class="control-label">Class/Family Link</label>
+                <label asp-for="ClassLink" class="control-label d-inline-flex align-items-center">
+                    Class/Family Link
+                    <button type="button"
+                            class="btn btn-link p-0 ms-2"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="This is the link you will navigate to for the student/child sign in page."
+                            aria-label="More information about the class/family link">
+                        <i class="bi bi-info-circle"></i>
+                    </button>
+                </label>
 
                 <div class="input-group">
                     <input type="text" id="fullClassLink" class="form-control" value="@fullClassLink" readonly />
