@@ -1726,15 +1726,15 @@
     "1": [
       {
         "question": "Which color is made by mixing red and blue?",
-        "answer": "purple",
+        "answer": "purple"
       },
       {
         "question": "Which color is made by mixing yellow and blue?",
-        "answer": "green",
+        "answer": "green"
       },
       {
         "question": "Which color is made by mixing red and yellow?",
-        "answer": "orange",
+        "answer": "orange"
       },
       {
         "question": "Which color is a primary color?",
@@ -1775,68 +1775,130 @@
   "Fix It": {
     "PK": [
       {
-        "question": "What should you do when a toy breaks?",
-        "answer": "Ask an adult for help"
+        "question": "What should you use to draw a picture?",
+        "answer": "Crayons"
       },
       {
-        "question": "What can fix a torn piece of paper?",
-        "answer": "Tape"
+        "question": "What should you use to get a drink of water?",
+        "answer": "Cup"
       },
       {
-        "question": "What can fix a loose button?",
-        "answer": "Sewing"
+        "question": "What should you use to cut paper?",
+        "answer": "Scissors"
       },
       {
-        "question": "What should you do when water spills?",
-        "answer": "Wipe it up"
+        "question": "What should you use to water your plant?",
+        "answer": "Watering can"
       },
       {
-        "question": "What should you do if a block tower falls?",
-        "answer": "Build it again"
+        "question": "What should you use to type a paper?",
+        "answer": "Computer"
+      },
+      {
+        "question": "What should you use to read a story?",
+        "answer": "Book"
+      },
+      {
+        "question": "What should you use to clean the table?",
+        "answer": "Cloth"
+      },
+      {
+        "question": "What should you use to tell the time?",
+        "answer": "Clock"
+      },
+      {
+        "question": "What should you use to build a tall tower?",
+        "answer": "Blocks"
+      },
+      {
+        "question": "What should you use to write your name?",
+        "answer": "Pencil"
       }
     ],
     "KG": [
       {
-        "question": "What force can move a toy car forward?",
-        "answer": "Push"
+        "question": "What should you use to look at the stars at night?",
+        "answer": "Telescope"
       },
       {
-        "question": "What force can move a wagon toward you?",
-        "answer": "Pull"
+        "question": "What should you use to fix a loose button?",
+        "answer": "Needle and thread"
       },
       {
-        "question": "How can you make a rolling ball stop?",
-        "answer": "Block it"
+        "question": "What should you do if your plant is dying?",
+        "answer": "Move it to a sunny spot",
+        "options": [ "Move it to a sunny spot", "Put it in a dark closet" ]
       },
       {
-        "question": "How can you make a toy car move faster?",
-        "answer": "Push harder"
+        "question": "What should you use to measure how much milk is in a jug?",
+        "answer": "Measuring cup"
       },
       {
-        "question": "How can you make a ball change direction?",
-        "answer": "Push it from the side"
+        "question": "What should you use to pick up a piece of food off of your plate?",
+        "answer": "Fork"
+      },
+      {
+        "question": "What could help you reach a toy stuck in a small space?",
+        "answer": "Long stick"
+      },
+      {
+        "question": "What should you use to see tiny details on a leaf?",
+        "answer": "Magnifying glass"
+      },
+      {
+        "question": "What should you use to keep your paper from blowing away outside?",
+        "answer": "Clipboard"
+      },
+      {
+        "question": "What should you use to carry a lot of books?",
+        "answer": "Backpack"
+      },
+      {
+        "question": "What should you wear to keep warm on a cold day?",
+        "answer": "Jacket"
       }
     ],
     "1": [
       {
-        "question": "What can change an object's motion?",
-        "answer": "A force"
+        "question": "What should you use to see in the dark?",
+        "answer": "Flashlight"
       },
       {
-        "question": "What happens when a force pushes a still object?",
-        "answer": "It can start moving"
+        "question": "What should you do first if you are growing a plant?",
+        "answer": "Give the plant water and sunlight",
+        "options": [ "Give the plant water and sunlight", "Put it in a freezer" ]
       },
       {
-        "question": "What happens when a force acts against a moving object?",
-        "answer": "It can slow down"
+        "question": "What tool would help you fix a button that came off of your shirt?",
+        "answer": "Sewing needle"
       },
       {
-        "question": "Which force pulls objects toward Earth?",
-        "answer": "Gravity"
+        "question": "What should you use to find information for a science project?",
+        "answer": "Computer"
       },
       {
-        "question": "What can happen when two moving objects collide?",
-        "answer": "Their motion can change"
+        "question": "What should you use to look closely at tiny plant cells?",
+        "answer": "Microscope"
+      },
+      {
+        "question": "What should you use to move water from one container to another without spilling much?",
+        "answer": "Funnel"
+      },
+      {
+        "question": "What should you use to tighten a screw on a broken toy?",
+        "answer": "Screwdriver"
+      },
+      {
+        "question": "What should you use to get exact measurements in your science experiement?",
+        "answer": "Ruler"
+      },
+      {
+        "question": "What should you use to catch dripping water?",
+        "answer": "Bucket"
+      },
+      {
+        "question": "What should you use to clean up a water mess on the counter?",
+        "answer": "Paper towel"
       }
     ]
   },
