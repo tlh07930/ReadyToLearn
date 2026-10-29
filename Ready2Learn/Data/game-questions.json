@@ -1340,23 +1340,53 @@
     "PK": [
       {
         "question": "What do we do first in the morning: wake up or go to bed?",
-        "answer": "Wake up"
+        "answer": "Wake up",
+        "options": [ "Wake up", "Go to bed" ]
       },
       {
         "question": "What do we do at night: sleep or eat breakfast?",
-        "answer": "Sleep"
+        "answer": "Sleep",
+        "options": [ "Sleep", "Eat breakfast" ]
       },
       {
         "question": "Which comes first: lunch or dinner?",
-        "answer": "Lunch"
+        "answer": "Lunch",
+        "options": [ "Lunch", "Dinner" ]
       },
       {
         "question": "Which happens before bedtime: brushing teeth or waking up?",
-        "answer": "Brushing teeth"
+        "answer": "Brushing teeth",
+        "options": [ "Brushing teeth", "Waking up" ]
       },
       {
         "question": "What tool helps us tell time?",
-        "answer": "Clock"
+        "answer": "Clock",
+        "options": [ "Clock", "Book", "Toy", "Shoe" ]
+      },
+      {
+        "question": "What do we do before school: get dressed or go to sleep?",
+        "answer": "Get dressed",
+        "options": [ "Get dressed", "Go to sleep" ]
+      },
+      {
+        "question": "Which happens first: breakfast or bedtime?",
+        "answer": "Breakfast",
+        "options": [ "Breakfast", "Bedtime" ]
+      },
+      {
+        "question": "What do we do after we wake up?",
+        "answer": "Get ready",
+        "options": [ "Get ready", "Go to sleep" ]
+      },
+      {
+        "question": "Which comes after lunch?",
+        "answer": "Nap",
+        "options": [ "Nap", "Breakfast" ]
+      },
+      {
+        "question": "What do we do when the day is over?",
+        "answer": "Go to bed",
+        "options": [ "Go to bed", "Eat lunch" ]
       }
     ],
     "KG": [
@@ -1378,7 +1408,31 @@
       },
       {
         "question": "How many hours are in one day?",
-        "answer": "24"
+        "answer": "24",
+        "options": [ "12", "24", "14", "30" ]
+      },
+      {
+        "question": "What time is 1 hour after 2:00?",
+        "answer": "3:00"
+      },
+      {
+        "question": "What time is 1 hour before 8:00?",
+        "answer": "7:00"
+      },
+      {
+        "question": "What is the long hand on a clock called?",
+        "answer": "Minute hand",
+        "options": [ "Minute hand", "Hour hand", "Second hand", "Face" ]
+      },
+      {
+        "question": "Which is longer: 1 hour or 1 minute?",
+        "answer": "1 hour",
+        "options": [ "1 hour", "1 minute" ]
+      },
+      {
+        "question": "What is the short hand on a clock called?",
+        "answer": "Hour hand",
+        "options": [ "Hour hand", "Minute hand", "Second hand", "Face" ]
       }
     ],
     "1": [
@@ -1391,16 +1445,38 @@
         "answer": "7:30"
       },
       {
-        "question": "What time is one hour after 4:00?",
-        "answer": "5:00"
+        "question": "What time is half past 9?",
+        "answer": "9:30"
       },
       {
-        "question": "What time is one hour before 10:00?",
-        "answer": "9:00"
+        "question": "What time is half past 11?",
+        "answer": "11:30"
+      },
+      {
+        "question": "What time is quarter past 3?",
+        "answer": "3:15"
+      },
+      {
+        "question": "What time is quarter past 6?",
+        "answer": "6:15"
+      },
+      {
+        "question": "What time is 30 minutes after 4:00?",
+        "answer": "4:30"
+      },
+      {
+        "question": "What time is 30 minutes before 10:00?",
+        "answer": "9:30"
+      },
+      {
+        "question": "Which is longer: 30 minutes or 15 minutes?",
+        "answer": "30 minutes",
+        "options": [ "30 minutes", "15 minutes" ]
       },
       {
         "question": "How many minutes are in one hour?",
-        "answer": "60"
+        "answer": "60",
+        "options": [ "30", "60", "24", "12" ]
       }
     ]
   },
