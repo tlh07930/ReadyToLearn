@@ -8,16 +8,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - Ready2Learn</title>
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/Ready2Learn.styles.css" asp-append-version="true" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ready2Learn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Ready2Learn.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-        <style>
+    <style>
             /* Header & Footer Style */
             .header, .footer {
                 height: 55px;
@@ -32,14 +32,17 @@
                 float: left;
                 padding-left: 10px
             }
+
             .btn-group {
                 float: right;
                 padding-right: 10px;
                 background-color: transparent;
             }
+
             .right-border {
                 border-right: 2px solid black;
             }
+
             .button {
                 background-color: transparent;
                 border: none;
@@ -48,6 +51,7 @@
                 font-weight: bold;
                 font-size: 12px;
             }
+
             .selected {
                 color: #555555;
                 text-decoration-line: underline;
@@ -55,19 +59,21 @@
                 text-underline-offset: 4px;
             }
 
-            /* Common Elements */
+            /* Common Elements — unchanged for other views */
             body {
                 height: 100%; /* Ensures the body can expand to the full height of the viewport */
                 margin: 0; /* Removes default browser margins, preventing scroll bars */
                 padding: 0; /* Removes default browser padding */
                 overflow: hidden; /* Explicitly hides any potential scroll bars */
             }
+
             .main-content-container {
                 display: flex;
                 flex-direction: column; /* Stacks children vertically */
                 height: 100vh; /* Ensures the container uses the full viewport height */
                 overflow: hidden; /* Prevents scroll bars on the container itself */
             }
+
             .main-content {
                 display: flex;
                 flex-grow: 1; /* This is the key: it grows to fill the available space */
@@ -76,11 +82,66 @@
                 justify-content: center;
                 align-items: center;
             }
+
+            /* Students/Children page only */
+            .students-layout .header,
+            .students-layout .footer {
+                box-sizing: border-box;
+                flex: 0 0 55px;
+                position: relative;
+                z-index: 2;
+                background-color: #fff;
+            }
+
+            .students-layout .main-content {
+                flex: 1 1 0;
+                min-height: 0;
+                padding-bottom: 0;
+                overflow-y: auto;
+                overflow-x: hidden;
+                align-items: flex-start;
+            }
+
+            .students-layout .students-page {
+                width: 100%;
+                height: 100%;
+                min-width: 0;
+                padding: 1rem;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            .students-layout .students-table-container {
+                width: 100%;
+                height: 100%;
+                overflow-x: auto;
+                overflow-y: auto;
+            }
+
+            .students-layout .student-table {
+                width: 65%;
+                max-width: 65%;
+                margin: 0 auto;
+            }
+
+            .students-layout .student-table thead th {
+                position: sticky;
+                top: 0;
+                z-index: 1;
+                background-color: #fff;
+            }
+
+            @@media (max-width: 768px) {
+                .students-layout .student-table {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+
             .common-button {
                 background-color: #e7e7e7;
                 border-radius: 8px;
                 border: 2px solid #e7e7e7;
-
                 min-width: 100px;
                 min-height: 100px;
             }
@@ -89,6 +150,7 @@
                 width: 200px;
                 height: 200px;
             }
+
             .choice-button {
                 display: flex;
                 align-items: center;
@@ -116,33 +178,38 @@
                 position: relative;
                 overflow: hidden;
             }
-            .game-card:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-            }
-            .game-card .game-image {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-                border-radius: 16px;
-            }
-            .game-card .game-icon {
-                font-size: 48px;
-                color: #2b8cc4;
-            }
-            .game-card .game-title {
-                font-size: 1.25rem;
-                font-weight: 800;
-                line-height: 1.1;
-                text-align: center;
-                padding: 0 6px;
-            }
-            .game-card:hover, .game-card:focus {
-                transform: translateY(-6px);
-                box-shadow: 0 14px 28px rgba(0,0,0,0.18);
-                text-decoration: none;
-            }
+
+                .game-card:hover {
+                    transform: translateY(-1px);
+                    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+                }
+
+                .game-card .game-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    border-radius: 16px;
+                }
+
+                .game-card .game-icon {
+                    font-size: 48px;
+                    color: #2b8cc4;
+                }
+
+                .game-card .game-title {
+                    font-size: 1.25rem;
+                    font-weight: 800;
+                    line-height: 1.1;
+                    text-align: center;
+                    padding: 0 6px;
+                }
+
+                .game-card:hover, .game-card:focus {
+                    transform: translateY(-6px);
+                    box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+                    text-decoration: none;
+                }
 
             /* Subject button visuals: rounded corners, soft gradient overlay, shadow and hover lift — keep their background images */
             .subject-card {
@@ -156,136 +223,145 @@
                 transition: transform 0.12s ease, box-shadow 0.12s ease;
                 background-color: transparent; /* background image applied inline on each button */
             }
-            .subject-card::before {
-                /* subtle gradient overlay to match game cards */
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.08));
-                z-index: 1;
-                pointer-events: none;
-            }
-            .subject-card:active::before,
-            .subject-card:focus::before {
-                background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
-            }
-            .subject-card:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 14px 28px rgba(0,0,0,0.18);
-            }
-            .subject-card > * {
-                position: relative;
-                z-index: 2; /* ensure label or inner content sits above overlay if needed */
-            }
+
+                .subject-card::before {
+                    /* subtle gradient overlay to match game cards */
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.08));
+                    z-index: 1;
+                    pointer-events: none;
+                }
+
+                .subject-card:active::before,
+                .subject-card:focus::before {
+                    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+                }
+
+                .subject-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+                }
+
+                .subject-card > * {
+                    position: relative;
+                    z-index: 2; /* ensure label or inner content sits above overlay if needed */
+                }
             /* Keep same sizing as .square on small screens */
             @@media (max-width: 576px) {
                 .subject-card, .square {
                     width: 140px;
                     height: 140px;
                 }
+
                 .game-card {
                     width: 140px;
                     height: 140px;
                 }
             }
-        </style>
-    </head>
+    </style>
+</head>
 
-    <body>
-        <div class="main-content-container">
-            <header class="header border-bottom box-shadow" style="display: flex; justify-content: space-between; align-items: center;">
-                @if (@ViewData["Title"].ToString() != "Log In" && @ViewData["Title"].ToString() != "Student/Child Log In")
-                {
-                    <h1 class="page-title">@ViewData["Title"]</h1>
-                    
-                    <div class="btn-group">
-                        @if (@ViewData["Title"].ToString() == "Home")
-                        {
-                            <a class="button btn-light right-border selected" asp-action="Home" asp-controller="LogIn">
-                                <i class="bi bi-house-door"></i>
-                                <br>
-                                Home
-                            </a>
-                        } else
-                        {
-                            <a class="button btn-light right-border" asp-action="Home" asp-controller="LogIn">
-                                <i class="bi bi-house-door"></i>
-                                <br>
-                                Home
-                            </a>
-                        }
-                        @if (Context.Request.Cookies["TeacherID"] != null)
-                        {
-                            @if (ViewData["Title"]?.ToString() == "Account")
-                            {
-                                <a class="button btn-light right-border selected"
-                                    asp-action="Account" asp-controller="Account" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
-                                    <i class="bi bi-person-circle"></i>
-                                    <br>
-                                    Account
-                                </a>
-                            } else
-                            {
-                                <a class="button btn-light right-border"
-                                    asp-action="Account" asp-controller="Account" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
-                                    <i class="bi bi-person-circle"></i>
-                                    <br>
-                                    Account
-                                </a>
-                            }
-                        @if (ViewData["Title"]?.ToString() == "Students/Children")
-                            {
-                                <a class="button btn-light right-border selected"
-                                    asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
-                                    <i class="bi bi-person-lines-fill"></i>
-                                    <br>
-                                    Students/Children
-                                </a>
-                            } else
-                            {
-                                <a class="button btn-light right-border"
-                                    asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
-                                    <i class="bi bi-person-lines-fill"></i>
-                                    <br>
-                                    Students/Children
-                                </a>
-                            }
-                            @if (ViewData["Title"]?.ToString() == "Student/Child Progress")
-                            {
-                                <a class="button btn-light right-border selected"
-                                    asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
-                                    <i class="bi bi-clipboard2-data"></i>
-                                    <br>
-                                    Student/Child Progress
-                                </a>
-                            } else
-                            {
-                                <a class="button btn-light right-border"
-                                    asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
-                                    <i class="bi bi-clipboard2-data"></i>
-                                    <br>
-                                    Student/Child Progress
-                                </a>
-                            }
-                        }
-                        <a class="button btn-light" asp-action="LogOut" asp-controller="LogIn">
-                            <i class="bi bi-box-arrow-right"></i>
+<body>
+    <div class="main-content-container @(ViewData["Title"]?.ToString() == "Students/Children" ? "students-layout" : "")">
+        <header class="header border-bottom box-shadow" style="display: flex; justify-content: space-between; align-items: center;">
+            @if (@ViewData["Title"].ToString() != "Log In" && @ViewData["Title"].ToString() != "Student/Child Log In")
+            {
+                <h1 class="page-title">@ViewData["Title"]</h1>
+
+                <div class="btn-group">
+                    @if (@ViewData["Title"].ToString() == "Home")
+                    {
+                        <a class="button btn-light right-border selected" asp-action="Home" asp-controller="LogIn">
+                            <i class="bi bi-house-door"></i>
                             <br>
-                            Log Out
+                            Home
                         </a>
-                    </div>
-                }
-            </header>
-            <main role="main" class="main-content">
-                @RenderBody()
-            </main>
-            <footer class="border-top footer text-muted"></footer>
-        </div>
+                    }
+                    else
+                    {
+                        <a class="button btn-light right-border" asp-action="Home" asp-controller="LogIn">
+                            <i class="bi bi-house-door"></i>
+                            <br>
+                            Home
+                        </a>
+                    }
+                    @if (Context.Request.Cookies["TeacherID"] != null)
+                    {
+                        @if (ViewData["Title"]?.ToString() == "Account")
+                        {
+                            <a class="button btn-light right-border selected"
+                               asp-action="Account" asp-controller="Account" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                <i class="bi bi-person-circle"></i>
+                                <br>
+                                Account
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="button btn-light right-border"
+                               asp-action="Account" asp-controller="Account" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                <i class="bi bi-person-circle"></i>
+                                <br>
+                                Account
+                            </a>
+                        }
+                        @if (ViewData["Title"]?.ToString() == "Students/Children")
+                        {
+                            <a class="button btn-light right-border selected"
+                               asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                <i class="bi bi-person-lines-fill"></i>
+                                <br>
+                                Students/Children
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="button btn-light right-border"
+                               asp-action="Students" asp-controller="Student" asp-route-teacherId="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                <i class="bi bi-person-lines-fill"></i>
+                                <br>
+                                Students/Children
+                            </a>
+                        }
+                        @if (ViewData["Title"]?.ToString() == "Student/Child Progress")
+                        {
+                            <a class="button btn-light right-border selected"
+                               asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                <i class="bi bi-clipboard2-data"></i>
+                                <br>
+                                Student/Child Progress
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="button btn-light right-border"
+                               asp-action="StudentProgress" asp-controller="StudentProgress" asp-route-id="@int.Parse(Context.Request.Cookies["TeacherID"])">
+                                <i class="bi bi-clipboard2-data"></i>
+                                <br>
+                                Student/Child Progress
+                            </a>
+                        }
+                    }
+                    <a class="button btn-light" asp-action="LogOut" asp-controller="LogIn">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <br>
+                        Log Out
+                    </a>
+                </div>
+            }
+        </header>
+        <main role="main" class="main-content">
+            @RenderBody()
+        </main>
+        <footer class="border-top footer text-muted"></footer>
+    </div>
 
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/tts.js" asp-append-version="true"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
-    </body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/tts.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 </html>
