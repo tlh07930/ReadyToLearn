@@ -4,8 +4,8 @@
     ViewData["Title"] = "Students/Children";
 }
 
-<div class="main-content">
-    <table class="table" style="width: 65%">
+<div class="students-page">
+    <table class="table student-table">
         <thead>
             <tr class="text-center">
                 <th>First Name</th>
@@ -52,7 +52,7 @@
         </tbody>
     </table>
 
-    <div style="position: fixed; right: 25px; bottom: 80px;">
+    <div style="position: fixed; right: 25px; bottom: 80px; z-index: 10;">
         <a class="btn btn-light" asp-controller="Student" asp-action="AddStudent">Add Student/Child</a>
     </div>
 </div>
